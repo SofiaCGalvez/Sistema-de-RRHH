@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/vite.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees</title>
+    <link rel="stylesheet" href="./dist/output.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div id="id">
+        <div class="min-h-screen bg-slate-50 flex">
+            <aside class="fixed left-0 top-0 h-full z-30 flex flex-col transition-all duration-300 w-[260px]" style="background: linear-gradient(rgb(30, 41, 59) 0%, rgb(15, 23, 42) 100%);">
+                <div class="flex items-center gap-3 px-4 py-5 border-b border-white/10 ">
+                    <div class="w-10 h-10 flex items-center justify-center flex-shrink-0">
+                        <img alt="HR System Logo" class="w-10 h-10 object-contain rounded-lg" src="https://public.readdy.ai/ai/img_res/ca025dc2-66b8-45cb-9b91-c50b6f856625.png">
+                    </div>
+                    <div>
+                        <p class="text-white font-bold text-base leading-tight whitespace-nowrap" style="font-family: Inter, sans-serif;"> HR Manager</p>
+                        <p class="text-slate-400 text-xs">Sistema de RRHH</p>
+                    </div>
+                </div>
+                <nav class="flex-1 px-3 py-4 overflow-y-auto">
+                    <ul class="space-y-1">
+                        <li>
+                            <a class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 cursor-pointer group text-slate-400 hover:bg-slate-700/60 hover:text-white  " href="index.html" data-discover="true" aria-current="page">
+                            <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                <i class="ri-dashboard-3-line text-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium whitespace-nowrap">Dashboard</span>
+                            
+                            </a>
+                        </li>
+                        <li>
+                            <a class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 cursor-pointer group text-slate-400 hover:bg-slate-700/60 hover:text-white  " href="directory.html" data-discover="true" aria-current="page">
+                            <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                <i class="ri-team-line text-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium whitespace-nowrap">Directorio de Empleados</span>
+                            
+                            </a>
+                        </li>
+                        <li>
+                            <a class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 cursor-pointer group text-slate-400 hover:bg-slate-700/60 hover:text-white  " href="departments.html" data-discover="true" aria-current="page">
+                            <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                <i class="ri-team-line text-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium whitespace-nowrap">Departamentos</span>
+                          
+                            </a>
+                        </li>
+                        <li>
+                            <a class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 cursor-pointer group text-slate-400 hover:bg-slate-700/60 hover:text-white  " href="salarios.html" data-discover="true" aria-current="page">
+                            <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                <i class="ri-history-line text-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium whitespace-nowrap">Historial laboral & Salarios</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 cursor-pointer group text-slate-400 hover:bg-slate-700/60 hover:text-white  " href="incidentes.html" data-discover="true" aria-current="page">
+                            <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                <i class="ri-alert-line text-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium whitespace-nowrap">Incidencias</span>
+                            
+                            </a>
+                        </li>
+                        <li>
+                            <a class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 cursor-pointer group bg-emerald-500 text-white shadow-lg " href="ajustes.html" data-discover="true" aria-current="page">
+                            <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                <i class="ri-settings-3-line text-lg"></i>
+                            </div>
+                            <span class="text-sm font-medium whitespace-nowrap">Ajustes</span>
+                            <div class="ml-auto w-1.5 h-1.5 rounded-full bg-white/70"></div>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="border-t border-white/10 p-4 ">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-sm font-bold">A</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-white text-sm font-semibold truncate">Admin User</p>
+                            <p class="text-slate-400 text-xs truncate">HR Administrator</p>
+                        </div>
+                        <button class="w-6 h-6 flex items-center justify-center text-slate-400 hover:text-white cursor-pointer">
+                            <i class="ri-arrow-left-s-line text-lg"></i>
+                        </button>
+                    </div>
+                </div>
+            </aside>
+            <div class="flex-1 flex flex-col min-h-screen transition-all duration-300" style="margin-left: 260px;">
+                <header class="fixed top-0 right-0 z-20 bg-white border-b border-slate-100 flex items-center px-6 transition-all duration-300" style="left: 260px; height: 70px;">
+                    <div class="flex-1">
+                        <h2 class="text-xl font-bold text-slate-800" style="font-family: Inter, sans-serif;">Ajustes</h2>
+                        <p class="text-xs text-slate-400">Configuración del sistema</p>
+                    </div>
+                    <div class="relative mx-6 hidden md:block">
+                        <div class="w-5 h-5 flex items-center justify-center absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
+                            <i class="ri-search-line text-sm"></i>
+                        </div>
+                        <input placeholder="Buscar empleados, departamentos..." class="bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-4 py-2.5 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 w-72 transition-all" type="text" value="">
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="relative">
+                            <button class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 cursor-pointer transition-colors relative">
+                                <i class="ri-notification-3-line text-lg"></i>
+                                <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
+                            </button>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500 flex items-center justify-center cursor-pointer">
+                            <span class="text-white text-sm font-bold">A</span>
+                        </div>
+                    </div>
+                </header>
+                <main class="flex-1 p-6 mt-[70px] overflow-auto">
+                    <div class="space-y-6 max-w-3xl">
+                        <div class="fixed top-5 right-5 z-[100] flex flex-col gap-2"></div>
+                        <div class="bg-white rounded-2xl border border-slate-100 p-6">
+                            <div class="flex items-center gap-3 mb-5">
+                                <div class="w-9 h-9 flex items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
+                                    <i class="ri-building-2-line text-lg"></i>
+                                </div>
+                                <h3 class="font-semibold text-slate-800">Información de la Empresa</h3>
+                            </div>
+                            <form class="space-y-4">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1">Nombre de la Empresa</label>
+                                        <input class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100" type="text" value="Empresa S.A. de C.V.">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1">Correo Electrónico</label>
+                                        <input class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100" type="email" value="admin@empresa.com">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1">Teléfono</label>
+                                        <input class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100" type="text" value="+52 664 285 3456">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1">Dirección</label>
+                                        <input class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100" type="text" value="Av. Reforma 123, CDMX">
+                                    </div>
+                                </div>
+                                <div class="flex justify-end">
+                                    <button type="submit" class="bg-emerald-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-emerald-600 cursor-pointer transition-colors whitespace-nowrap">Guardar Cambios</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="bg-white rounded-2xl border border-slate-100 p-6">
+                            <div class="flex items-center gap-3 mb-5">
+                                <div class="w-9 h-9 flex items-center justify-center rounded-xl bg-sky-50 text-sky-600">
+                                    <i class="ri-database-2-line text-lg"></i>
+                                </div>
+                                <h3 class="font-semibold text-slate-800">Configuración de Base de Datos MySQL</h3>
+                            </div>
+                            <div class="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-4 flex items-start gap-2">
+                                <div class="w-4 h-4 flex items-center justify-center text-amber-600 mt-0.5">
+                                    <i class="ri-information-line text-sm"></i>
+                                </div>
+                                <p class="text-xs text-amber-700">Esta configuración es referencial para el backend Node.js/Express. La conexión real se realiza en el servidor.</p>
+                            </div>
+                            <form class="space-y-4">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1">Host</label>
+                                        <input class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-mono focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100" type="text" value="localhost">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1">Puerto</label>
+                                        <input class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-mono focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100" type="text" value="3306">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1">Base de Datos</label>
+                                        <input class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-mono focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100" type="text" value="employees">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-700 mb-1">Usuario</label>
+                                        <input class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-mono focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100" type="text" value="root">
+                                    </div>
+                                </div>
+                                <div class="flex justify-end">
+                                    <button type="submit" class="bg-sky-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-sky-600 cursor-pointer transition-colors whitespace-nowrap">Guardar Configuración</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </main>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
