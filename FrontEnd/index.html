@@ -46,7 +46,7 @@
                                 <i class="ri-team-line text-lg"></i>
                             </div>
                             <span class="text-sm font-medium whitespace-nowrap">Departamentos</span>
-                            </a>
+                            </a> 
                         </li>
                         <li>
                             <a class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 cursor-pointer group text-slate-400 hover:bg-slate-700/60 hover:text-white  " href="salarios.html" data-discover="true" aria-current="page">
@@ -250,7 +250,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="lg:col-span-1">
+                                 <div class="lg:col-span-1">
                                     <div class="bg-white rounded-2xl border border-slate-100 p-6">
                                         <div class="flex items-center justify-between mb-5">
                                             <h3 class="font-semibold text-slate-800">Resumen de Incidencias</h3>
@@ -326,7 +326,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="lg:col-span-1">
+                             <!-- todo tu contenido    <div class="lg:col-span-1">
                                     <div class="bg-white rounded-2xl border border-slate-100 p-6">
                                         <div class="flex items-center justify-between mb-5">
                                             <h3 class="font-semibold text-slate-800">Actividad Reciente</h3>
@@ -385,6 +385,55 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>-->
+                                <div class="lg:col-span-1">
+                                    <div class="bg-white rounded-2xl border border-slate-100 p-5 h-full">
+                                        <div class="flex items-center justify-between mb-4">
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-5 h-5 flex items-center justify-center text-slate-500">
+                                                    <i class="ri-map-pin-line text-sm"></i>
+                                                </div>
+                                                <h3 class="font-semibold text-slate-800 text-sm">Clima — Tijuana, B.C.</h3>
+                                            </div>
+                                            <span id="hora" class="text-xs text-slate-400">09:15 p.m.</span>
+                                        </div>
+                                        <div class="flex items-center gap-4 mb-5">
+                                            <div class="w-14 h-14 flex items-center justify-center rounded-xl bg-amber-50">
+                                                <i id="weatherIcon" class="ri-sun-line text-3xl text-amber-500"></i>
+                                            </div>
+                                            <div>
+                                                <div class= "flex items-end gap-1">
+                                                    <span id="temp" class="text-4xl font-bold text-slate-800">  </span>
+                                                    <span class="text-lg text-slate-400 mb-1">C</span>
+                                                </div>
+                                                <p id="desc" class="text-sm text-slate-500">  </p>
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-cols-3 gap-2">
+                                            <div class="bg-slate-50 rounded-xl p-3 text-center">
+                                                <div class="w-5 h-5 flex items-center justify-center mx-auto mb-1 text-slate-400">
+                                                    <i class="ri-temp-hot-line text-sm"></i>
+                                                </div>
+                                                <p id="feels" class="text-sm font-semibold text-slate-700">  </p>
+                                                <p class="text-xs text-slate-400 mt-0.5">Sensación</p>
+                                            </div>
+                                            <div class="bg-slate-50 rounded-xl p-3 text-center">
+                                                <div class="w-5 h-5 flex items-center justify-center mx-auto mb-1 text-slate-400">
+                                                    <i class="ri-drop-line text-sm"></i>
+                                                </div>
+                                                <p id="humidity" class="text-sm font-semibold text-slate-700">  </p>
+                                                <p class="text-xs text-slate-400 mt-0.5">Humedad</p>
+                                            </div>
+                                            <div class="bg-slate-50 rounded-xl p-3 text-center">
+                                                <div class="w-5 h-5 flex items-center justify-center mx-auto mb-1 text-slate-400">
+                                                    <i class="ri-windy-line text-sm"></i>
+                                                </div>
+                                                <p id="wind" class="text-sm font-semibold text-slate-700">  </p>
+                                                <p class="text-xs text-slate-400 mt-0.5">Viento</p>
+                                            </div>
+                                        </div>
+                                        <p class="text-xs text-slate-300 mt-3 text-center capitalize">martes, 14 de abril</p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="bg-white rounded-2xl border border-slate-100 p-6">
@@ -421,5 +470,41 @@
             </div>
         </div>
     </div>
+    <script>
+        (() => {
+            const locale = 'es-MX';
+            const now = new Date();
+
+            const welcomeText = document.querySelector('.rounded-2xl p.text-emerald-300');
+            if (welcomeText) {
+                const formattedDate = new Intl.DateTimeFormat(locale, {
+                    weekday: 'long',
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                }).format(now);
+                welcomeText.textContent = `Hoy es ${formattedDate}`;
+            }
+
+            const weatherTime = document.querySelector('.ri-map-pin-line')?.closest('.flex')?.parentElement?.querySelector('span.text-xs');
+            if (weatherTime) {
+                weatherTime.textContent = new Intl.DateTimeFormat(locale, {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                }).format(now);
+            }
+
+            const weatherDate = document.querySelector('p.text-xs.text-slate-300.mt-3.text-center.capitalize');
+            if (weatherDate) {
+                weatherDate.textContent = new Intl.DateTimeFormat(locale, {
+                    weekday: 'long',
+                    day: 'numeric',
+                    month: 'long'
+                }).format(now);
+            }
+        })();
+    </script>
+    <script src="js/apiclima.js"></script>
+
 </body>
 </html>

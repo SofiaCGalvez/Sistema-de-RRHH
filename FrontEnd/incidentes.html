@@ -117,6 +117,151 @@
                         </div>
                     </div>
                 </header>
+                <main class="flex-1 p-6 mt-[70px] overflow-auto">
+                    <div class="space-y-5">
+                        <div class="fixed top-5 right-5 z-[100] flex flex-col gap-2"></div>
+                        <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
+
+                            <!-- IZQUIERDA -->
+                            <div class="flex gap-3 flex-wrap">
+                                <div class="relative">
+                                    <select class="border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-emerald-400 bg-white text-slate-700"">
+                                    <option value="all">Todos los estados</option>
+                                    <option value="Development">Pendiente</option>
+                                    <option value="Sales">En Proceso</option>
+                                    <option value="Production">Resuelta</option>
+                                    <option value="Human Resources">Cerrada</option>
+                                </select>
+                                </div>
+
+                                <select class="border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-emerald-400 bg-white text-slate-700"">
+                                    <option value="all">Todos las prioridades</option>
+                                    <option value="Development">Baja</option>
+                                    <option value="Sales">Media</option>
+                                    <option value="Production">Alta</option>
+                                    <option value="Human Resources">Critica</option>
+                                </select>
+                            </div>
+
+                            <!-- DERECHA -->
+                            <button class="flex items-center gap-2 bg-red-500 text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-red-600 whitespace-nowrap">
+                                <i class="ri-alert-line"></i>
+                                Registrar Incidencia
+                            </button>
+                        </div>
+                        <div class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+                            <div class="overflow-x-auto">
+                                <table class="w-full">
+                                    <thead>
+                                        <tr class="bg-slate-50 border-b border-slate-100">
+                                            <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wide">ID</th>
+                                            <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wide">Empleado</th>
+                                            <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wide">Tipo</th>
+                                            <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wide">Descripción</th>
+                                            <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wide">Prioridad</th>
+                                            <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wide">Estado</th>
+                                            <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wide">Fecha</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-50">
+                                        <tr class="hover:bg-slate-50/60 transition-colors">
+                                            <td class="px-5 py-4 text-xs font-mono text-slate-400">#1</td>
+                                            <td class="px-5 py-4">
+                                                <p class="text-sm font-semibold text-slate-800">Georgi Facello</p>
+                                                <p class="text-xs text-slate-400">Development</p>
+                                            </td>
+                                            <td class="px-5 py-4 text-sm text-slate-600">Tardanza</td>
+                                            <td class="px-5 py-4 text-sm text-slate-500 max-w-xs">
+                                                <p class="truncate">El empleado llegó 45 minutos tarde sin justificación previa.</p>
+                                            </td>
+                                            <td class="px-5 py-4">
+                                                <span class="text-xs font-semibold text-emerald-600">Baja</span>
+                                            </td>
+                                            <td class="px-5 py-4">
+                                                <select class="text-xs font-medium px-2.5 py-1 rounded-full border-0 cursor-pointer focus:outline-none bg-emerald-100 text-emerald-700">
+                                                    <option value="pending">Pendiente</option>
+                                                    <option value="in_process">En Proceso</option>
+                                                    <option value="resolved">Resuelta</option>
+                                                    <option value="closed">Cerrada</option>
+                                                </select>
+                                            </td>
+                                            <td class="px-5 py-4 text-xs text-slate-400">15/3/2024</td>
+                                        </tr>
+                                        <tr class="hover:bg-slate-50/60 transition-colors">
+                                            <td class="px-5 py-4 text-xs font-mono text-slate-400">#2</td>
+                                            <td class="px-5 py-4">
+                                                <p class="text-sm font-semibold text-slate-800">Parto Bamford</p>
+                                                <p class="text-xs text-slate-400">Production</p>
+                                            </td>
+                                            <td class="px-5 py-4 text-sm text-slate-600">Ausentismo</td>
+                                            <td class="px-5 py-4 text-sm text-slate-500 max-w-xs">
+                                                <p class="truncate">Falta injustificada el día 10 de marzo.</p>
+                                            </td>
+                                            <td class="px-5 py-4">
+                                                <span class="text-xs font-semibold text-orange-600">Alta</span>
+                                            </td>
+                                            <td class="px-5 py-4">
+                                                <select class="text-xs font-medium px-2.5 py-1 rounded-full border-0 cursor-pointer focus:outline-none bg-amber-100 text-amber-700">
+                                                    <option value="pending">Pendiente</option>
+                                                    <option value="in_process">En Proceso</option>
+                                                    <option value="resolved">Resuelta</option>
+                                                    <option value="closed">Cerrada</option>
+                                                </select>
+                                            </td>
+                                            <td class="px-5 py-4 text-xs text-slate-400">15/3/2024</td>
+                                        </tr>
+                                        <tr class="hover:bg-slate-50/60 transition-colors">
+                                            <td class="px-5 py-4 text-xs font-mono text-slate-400">#3</td>
+                                            <td class="px-5 py-4">
+                                                <p class="text-sm font-semibold text-slate-800">Tzvetan Zielinski</p>
+                                                <p class="text-xs text-slate-400">Research</p>
+                                            </td>
+                                            <td class="px-5 py-4 text-sm text-slate-600">Conflicto Laboral</td>
+                                            <td class="px-5 py-4 text-sm text-slate-500 max-w-xs">
+                                                <p class="truncate">Reporte de conflicto con compañero de equipo durante reunión de proyecto.</p>
+                                            </td>
+                                            <td class="px-5 py-4">
+                                                <span class="text-xs font-semibold text-amber-600">Media</span>
+                                            </td>
+                                            <td class="px-5 py-4">
+                                                <select class="text-xs font-medium px-2.5 py-1 rounded-full border-0 cursor-pointer focus:outline-none bg-sky-100 text-sky-700">
+                                                    <option value="pending">Pendiente</option>
+                                                    <option value="in_process">En Proceso</option>
+                                                    <option value="resolved">Resuelta</option>
+                                                    <option value="closed">Cerrada</option>
+                                                </select>
+                                            </td>
+                                            <td class="px-5 py-4 text-xs text-slate-400">22/6/2024</td>
+                                        </tr>
+                                        <tr class="hover:bg-slate-50/60 transition-colors">
+                                            <td class="px-5 py-4 text-xs font-mono text-slate-400">#4</td>
+                                            <td class="px-5 py-4">
+                                                <p class="text-sm font-semibold text-slate-800">Chirstian Koblicki</p>
+                                                <p class="text-xs text-slate-400">Production</p>
+                                            </td>
+                                            <td class="px-5 py-4 text-sm text-slate-600">Accidente Laboral</td>
+                                            <td class="px-5 py-4 text-sm text-slate-500 max-w-xs">
+                                                <p class="truncate">Lesión menor en mano derecha durante operación de maquinaria. Atendido en enfermería.</p>
+                                            </td>
+                                            <td class="px-5 py-4">
+                                                <span class="text-xs font-semibold text-red-600">Critica</span>
+                                            </td>
+                                            <td class="px-5 py-4">
+                                                <select class="text-xs font-medium px-2.5 py-1 rounded-full border-0 cursor-pointer focus:outline-none bg-slate-100 text-slate-700">
+                                                    <option value="pending">Pendiente</option>
+                                                    <option value="in_process">En Proceso</option>
+                                                    <option value="resolved">Resuelta</option>
+                                                    <option value="closed">Cerrada</option>
+                                                </select>
+                                            </td>
+                                            <td class="px-5 py-4 text-xs text-slate-400">12/6/2024</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
                 
             </div>
         </div>
