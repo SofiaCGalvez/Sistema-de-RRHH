@@ -128,7 +128,7 @@
                             <div class="absolute -top-4 right-24 w-20 h-20 rounded-full bg-white/5"></div>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                            <div class="bg-white rounded-2xl p-6 border border-slate-100 hover:border-slate-200 transition-all duration-200">
+                            <div class="block bg-white rounded-2xl p-6 border border-slate-100 hover:border-slate-200 transition-all duration-200">
                                 <div class="flex items-start justify-between">
                                     <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-emerald-50">
                                         <i class="ri-team-line text-xl text-emerald-600"></i>
@@ -138,7 +138,7 @@
                                     </span>
                                 </div>
                                 <div class="mt-4">
-                                    <p class="text-3xl font-bold text-slate-800">300024</p>
+                                    <p id="totalEmployeesValue" class="text-3xl font-bold text-slate-800">--</p>
                                     <p class="text-sm text-slate-500 mt-1">Total Empleados</p>
                                 </div>
                             </div>
@@ -152,10 +152,11 @@
                                     </span>
                                 </div>
                                 <div class="mt-4">
-                                    <p class="text-3xl font-bold text-slate-800">9</p>
+                                    <p id="activeDepartmentsValue" class="text-3xl font-bold text-slate-800">--</p>
                                     <p class="text-sm text-slate-500 mt-1">Departamentos Activos</p>
                                 </div>
                             </div>
+
                             <div class="bg-white rounded-2xl p-6 border border-slate-100 hover:border-slate-200 transition-all duration-200">
                                 <div class="flex items-start justify-between">
                                     <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-amber-50">
@@ -166,25 +167,28 @@
                                     </span>
                                 </div>
                                 <div class="mt-4">
-                                    <p class="text-3xl font-bold text-slate-800">$74,200</p>
+                                    <p id="averageSalaryValue" class="text-3xl font-bold text-slate-800">--</p>
                                     <p class="text-sm text-slate-500 mt-1">Salario Promedio</p>
                                 </div>
                             </div>
+
                             <div class="bg-white rounded-2xl p-6 border border-slate-100 hover:border-slate-200 transition-all duration-200">
                                 <div class="flex items-start justify-between">
                                     <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-red-50">
                                         <i class="ri-alert-line text-xl bg-red-50 text-red-500"></i>
                                     </div>
                                     <span class="flex items-center gap-1 text-xs font-medium px-2 py-1 rounded-full bg-red-50 text-red-500">
-                                        <i class="ri-arrow-up-line text-xs text-red-500"></i> -3
+                                        <i class="ri-external-link-line text-xs text-red-500"></i> Ver detalle
                                     </span>
                                 </div>
                                 <div class="mt-4">
-                                    <p class="text-3xl font-bold text-slate-800">8</p>
+                                    <p id="pendingIncidentsValue" class="text-3xl font-bold text-slate-800">0</p>
                                     <p class="text-sm text-slate-500 mt-1">Incidencias Pendientes</p>
                                 </div>
                             </div>
-                        </div>
+                                
+                            </div>
+                            
                             <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
                                 <div class="lg:col-span-1">
                                     <div class="bg-white rounded-2xl border border-slate-100 p-6">
@@ -192,8 +196,8 @@
                                             <h3 class="font-semibold text-slate-800">Empleados por Departamento</h3>
                                             <span class="text-xs text-slate-400">Total: 300024</span>
                                         </div>
-                                        <div class="space-y-4">
-                                            <div>
+                                        <div class="space-y-4" id="departments">
+                                         <!-- todo tu contenido   <div>
                                                 <div class="flex items-center justify-between mb-1.5">
                                                     <span class="text-sm text-slate-600">Development</span>
                                                     <span class="text-sm font-semibold text-slate-800">28</span>
@@ -246,7 +250,7 @@
                                                 <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
                                                     <div class="h-full rounded-full transition-all duration-700" style="width: 34%; background-color: rgb(6, 182, 212);"></div>
                                                 </div>
-                                            </div>
+                                            </div>  -->
                                         </div>
                                     </div>
                                 </div>
@@ -504,7 +508,85 @@
             }
         })();
     </script>
+    <script>
+        (() => {
+            const totalEmployeesValue = document.getElementById('totalEmployeesValue');
+            const activeDepartmentsValue = document.getElementById('activeDepartmentsValue');
+            const averageSalaryValue = document.getElementById('averageSalaryValue');
+            const pendingIncidentsValue = document.getElementById('pendingIncidentsValue');
+
+            const formatNumber = (value) => new Intl.NumberFormat('es-MX').format(value ?? 0);
+            const formatCurrency = (value) => new Intl.NumberFormat('es-MX', {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 0
+            }).format(value ?? 0);
+
+            const formatFallbackSummaryFromEmployees = (employees) => {
+                const now = new Date();
+                const lastYear = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
+
+                const recentHires = employees.filter((employee) => {
+                    if (!employee.hire_date) {
+                        return false;
+                    }
+
+                    return new Date(employee.hire_date) >= lastYear;
+                }).length;
+
+                return {
+                    totalEmployees: employees.length,
+                    activeDepartments: 0,
+                    averageSalary: 0,
+                    recentHires
+                };
+            };
+
+            const renderSummary = (summary) => {
+                totalEmployeesValue.textContent = formatNumber(summary.totalEmployees);
+                activeDepartmentsValue.textContent = formatNumber(summary.activeDepartments);
+                averageSalaryValue.textContent = formatCurrency(summary.averageSalary);
+                pendingIncidentsValue.textContent = formatNumber(summary.pendingIncidents);
+            };
+
+            const loadDashboardSummary = async () => {
+                try {
+                    const response = await fetch('http://localhost:3000/dashboard/summary');
+
+                    if (!response.ok) {
+                        throw new Error('No se pudo obtener el resumen');
+                    }
+
+                    const summary = await response.json();
+                    renderSummary(summary);
+                } catch (error) {
+                    console.error('Error cargando resumen del dashboard:', error);
+
+                    try {
+                        const fallbackResponse = await fetch('http://localhost:3000/employees');
+
+                        if (!fallbackResponse.ok) {
+                            throw new Error('No se pudo obtener employees');
+                        }
+
+                        const employees = await fallbackResponse.json();
+                        const fallbackSummary = formatFallbackSummaryFromEmployees(employees);
+                        renderSummary(fallbackSummary);
+                    } catch (fallbackError) {
+                        console.error('Error cargando employees como respaldo:', fallbackError);
+                        totalEmployeesValue.textContent = 'N/D';
+                        activeDepartmentsValue.textContent = 'N/D';
+                        averageSalaryValue.textContent = 'N/D';
+                        pendingIncidentsValue.textContent = 'N/D';
+                    }
+                }
+            };
+
+            loadDashboardSummary();
+        })();
+    </script>
     <script src="js/apiclima.js"></script>
+    <script src="js/dashboard.js"></script>
 
 </body>
 </html>

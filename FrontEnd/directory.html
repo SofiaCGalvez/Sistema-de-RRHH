@@ -125,11 +125,11 @@
                                     <div class="w-4 h-4 flex items-center justify-center absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
                                         <i class="ri-search-line text-sm"></i>
                                     </div>
-                                    <input placeholder="Buscar empleado..." 
+                                    <input id="employeeSearchInput" placeholder="Buscar empleado..." 
                                         class="pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 w-56" type="text" value>
                                 </div>
 
-                                <select class="border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-emerald-400 bg-white text-slate-700"">
+                                <select id="departmentFilter" class="border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-emerald-400 bg-white text-slate-700"">
                                     <option value="all">Todos los departamentos</option>
                                     <option value="Development">Development</option>
                                     <option value="Sales">Sales</option>
@@ -160,149 +160,17 @@
                                             <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wide">Acciones</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="divide-y divide-slate-50">
-                                        <tr class="hover:bg-slate-50/60 transition-colors">
-                                            <td class="px-5 py-4">
-                                                <div class="flex items-center gap-3">
-                                                    <div>
-                                                        <p class="text-sm font-semibold text-slate-800">Georgi Facello</p>
-                                                        <p class="text-xs text-slate-400">#10001</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="px-5 py-4 text-sm text-slate-600">Senior Engineer</td>
-                                            <td class="px-5 py-4">
-                                                <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-sky-100 text-sky-700">Development</span>
-                                            </td>
-                                            <td class="px-5 py-4 text-sm text-slate-500">1986-06-26</td>
-                                            <td class="px-5 py-4 text-sm font-semibold text-slate-800">$88,958</td>
-                                            <td class="px-5 py-4">
-                                                <div class="flex items-center gap-1">
-                                                    <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-emerald-50 text-slate-400 hover:text-emerald-600 cursor-pointer transition-colors">
-                                                        <i class="ri-edit-line text-base"></i>
-                                                    </button>
-                                                    <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-500 cursor-pointer transition-colors">
-                                                        <i class="ri-delete-bin-line text-base"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="hover:bg-slate-50/60 transition-colors">
-                                            <td class="px-5 py-4">
-                                                <div class="flex items-center gap-3">
-                                                    <div>
-                                                        <p class="text-sm font-semibold text-slate-800">Bezalel Simmel</p>
-                                                        <p class="text-xs text-slate-400">#10002</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="px-5 py-4 text-sm text-slate-600">Staff</td>
-                                            <td class="px-5 py-4">
-                                                <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-amber-100 text-amber-700">Sales</span>
-                                            </td>
-                                            <td class="px-5 py-4 text-sm text-slate-500">	1985-11-21</td>
-                                            <td class="px-5 py-4 text-sm font-semibold text-slate-800">$72,527</td>
-                                            <td class="px-5 py-4">
-                                                <div class="flex items-center gap-1">
-                                                    <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-emerald-50 text-slate-400 hover:text-emerald-600 cursor-pointer transition-colors">
-                                                        <i class="ri-edit-line text-base"></i>
-                                                    </button>
-                                                    <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-500 cursor-pointer transition-colors">
-                                                        <i class="ri-delete-bin-line text-base"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="hover:bg-slate-50/60 transition-colors">
-                                            <td class="px-5 py-4">
-                                                <div class="flex items-center gap-3">
-                                                    <div>
-                                                        <p class="text-sm font-semibold text-slate-800">Parto Bamford</p>
-                                                        <p class="text-xs text-slate-400">#10003</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="px-5 py-4 text-sm text-slate-600">Senior Engineer</td>
-                                            <td class="px-5 py-4">
-                                                <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-red-100 text-red-700">Production</span>
-                                            </td>
-                                            <td class="px-5 py-4 text-sm text-slate-500">1986-08-28</td>
-                                            <td class="px-5 py-4 text-sm font-semibold text-slate-800">$43,311</td>
-                                            <td class="px-5 py-4">
-                                                <div class="flex items-center gap-1">
-                                                    <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-emerald-50 text-slate-400 hover:text-emerald-600 cursor-pointer transition-colors">
-                                                        <i class="ri-edit-line text-base"></i>
-                                                    </button>
-                                                    <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-500 cursor-pointer transition-colors">
-                                                        <i class="ri-delete-bin-line text-base"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="hover:bg-slate-50/60 transition-colors">
-                                            <td class="px-5 py-4">
-                                                <div class="flex items-center gap-3">
-                                                    <div>
-                                                        <p class="text-sm font-semibold text-slate-800">Kyoichi Maliniak</p>
-                                                        <p class="text-xs text-slate-400">#10004</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="px-5 py-4 text-sm text-slate-600">Senior Staff</td>
-                                            <td class="px-5 py-4">
-                                                <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-violet-100 text-violet-700">Human Resources</span>
-                                            </td>
-                                            <td class="px-5 py-4 text-sm text-slate-500">1989-09-12</td>
-                                            <td class="px-5 py-4 text-sm font-semibold text-slate-800">$94,692</td>
-                                            <td class="px-5 py-4">
-                                                <div class="flex items-center gap-1">
-                                                    <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-emerald-50 text-slate-400 hover:text-emerald-600 cursor-pointer transition-colors">
-                                                        <i class="ri-edit-line text-base"></i>
-                                                    </button>
-                                                    <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-500 cursor-pointer transition-colors">
-                                                        <i class="ri-delete-bin-line text-base"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="hover:bg-slate-50/60 transition-colors">
-                                            <td class="px-5 py-4">
-                                                <div class="flex items-center gap-3">
-                                                    <div>
-                                                        <p class="text-sm font-semibold text-slate-800">Tzvetan Zielinski</p>
-                                                        <p class="text-xs text-slate-400">#10005</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="px-5 py-4 text-sm text-slate-600">Senior Staff</td>
-                                            <td class="px-5 py-4">
-                                                <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-pink-100 text-pink-700">Research</span>
-                                            </td>
-                                            <td class="px-5 py-4 text-sm text-slate-500">1989-02-10</td>
-                                            <td class="px-5 py-4 text-sm font-semibold text-slate-800">$88,070</td>
-                                            <td class="px-5 py-4">
-                                                <div class="flex items-center gap-1">
-                                                    <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-emerald-50 text-slate-400 hover:text-emerald-600 cursor-pointer transition-colors">
-                                                        <i class="ri-edit-line text-base"></i>
-                                                    </button>
-                                                    <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-500 cursor-pointer transition-colors">
-                                                        <i class="ri-delete-bin-line text-base"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
+                                    <tbody id="employeesTableBody" class="divide-y divide-slate-50"></tbody>
                                 </table>
                             </div>
                             <div class="flex items-center justify-between px-5 py-4 border-t border-slate-100">
-                                <p class="text-sm text-slate-500">12 empleados encontrados</p>
+                                <p id="employeesCount" class="text-sm text-slate-500">Cargando empleados...</p>
                                 <div class="flex items-center gap-1">
-                                    <button class="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-40 cursor-pointer">
+                                    <button id="prevPageButton" class="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-40 cursor-pointer">
                                         <i class="ri-arrow-left-s-line"></i>
                                     </button>
-                                    <button class="w-8 h-8 flex items-center justify-center rounded-lg text-sm font-medium cursor-pointer transition-colors border border-slate-200 text-slate-600 hover:bg-slate-50">1</button>
-                                    <button class="w-8 h-8 flex items-center justify-center rounded-lg text-sm font-medium cursor-pointer transition-colors border border-slate-200 text-slate-600 hover:bg-slate-50">2</button>
-                                    <button class="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-40 cursor-pointer">
+                                    <div id="paginationNumbers" class="flex items-center gap-1"></div>
+                                    <button id="nextPageButton" class="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-40 cursor-pointer">
                                         <i class="ri-arrow-right-s-line"></i>
                                     </button>
                                 </div>
@@ -316,5 +184,198 @@
             </div>
         </div>
     </div>
+    <script>
+        (() => {
+            const API_BASE_URL = 'http://localhost:3000';
+            const employeesTableBody = document.getElementById('employeesTableBody');
+            const employeesCount = document.getElementById('employeesCount');
+            const prevPageButton = document.getElementById('prevPageButton');
+            const nextPageButton = document.getElementById('nextPageButton');
+            const paginationNumbers = document.getElementById('paginationNumbers');
+            const employeeSearchInput = document.getElementById('employeeSearchInput');
+            const departmentFilter = document.getElementById('departmentFilter');
+            const employeesPerPage = 20;
+            let allEmployees = [];
+            let filteredEmployees = [];
+            let currentPage = 1;
+
+            const departmentStyles = {
+                Development: 'bg-sky-100 text-sky-700',
+                Sales: 'bg-amber-100 text-amber-700',
+                Production: 'bg-red-100 text-red-700',
+                'Human Resources': 'bg-violet-100 text-violet-700',
+                Research: 'bg-pink-100 text-pink-700',
+                Marketing: 'bg-emerald-100 text-emerald-700',
+                'Quality Management': 'bg-cyan-100 text-cyan-700',
+                Finance: 'bg-indigo-100 text-indigo-700'
+            };
+
+            const formatDate = (dateValue) => {
+                const date = new Date(dateValue);
+                if (Number.isNaN(date.getTime())) {
+                    return dateValue || 'N/D';
+                }
+
+                return date.toISOString().split('T')[0];
+            };
+
+            const formatCurrency = (value) => new Intl.NumberFormat('es-MX', {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 0
+            }).format(value || 0);
+
+            const createEmployeeRow = (employee) => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-slate-50/60 transition-colors';
+                row.innerHTML = `
+                    <td class="px-5 py-4">
+                        <div class="flex items-center gap-3">
+                            <div>
+                                <p class="text-sm font-semibold text-slate-800">${employee.first_name} ${employee.last_name}</p>
+                                <p class="text-xs text-slate-400">#${employee.emp_no}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-5 py-4 text-sm text-slate-600">${employee.title}</td>
+                    <td class="px-5 py-4">
+                        <span class="text-xs font-medium px-2.5 py-1 rounded-full ${departmentStyles[employee.department] || 'bg-slate-100 text-slate-700'}">${employee.department}</span>
+                    </td>
+                    <td class="px-5 py-4 text-sm text-slate-500">${formatDate(employee.hire_date)}</td>
+                    <td class="px-5 py-4 text-sm font-semibold text-slate-800">${formatCurrency(employee.salary)}</td>
+                    <td class="px-5 py-4">
+                        <div class="flex items-center gap-1">
+                            <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-emerald-50 text-slate-400 hover:text-emerald-600 cursor-pointer transition-colors">
+                                <i class="ri-edit-line text-base"></i>
+                            </button>
+                            <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-500 cursor-pointer transition-colors">
+                                <i class="ri-delete-bin-line text-base"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+
+                return row;
+            };
+
+            const renderPagination = () => {
+                const totalPages = Math.max(1, Math.ceil(filteredEmployees.length / employeesPerPage));
+                paginationNumbers.innerHTML = '';
+
+                for (let page = 1; page <= totalPages; page += 1) {
+                    const pageButton = document.createElement('button');
+                    const isActive = page === currentPage;
+                    pageButton.className = `w-8 h-8 flex items-center justify-center rounded-lg text-sm font-medium cursor-pointer transition-colors border ${isActive ? 'border-emerald-500 bg-emerald-50 text-emerald-600' : 'border-slate-200 text-slate-600 hover:bg-slate-50'}`;
+                    pageButton.textContent = page;
+                    pageButton.addEventListener('click', () => {
+                        currentPage = page;
+                        renderEmployees();
+                    });
+                    paginationNumbers.appendChild(pageButton);
+                }
+
+                prevPageButton.disabled = currentPage === 1;
+                nextPageButton.disabled = currentPage === totalPages;
+            };
+
+            const renderEmployees = () => {
+                const startIndex = (currentPage - 1) * employeesPerPage;
+                const endIndex = startIndex + employeesPerPage;
+                const employeesToRender = filteredEmployees.slice(startIndex, endIndex);
+
+                employeesTableBody.innerHTML = '';
+                employeesToRender.forEach((employee) => {
+                    employeesTableBody.appendChild(createEmployeeRow(employee));
+                });
+
+                if (!employeesToRender.length) {
+                    employeesTableBody.innerHTML = `
+                        <tr>
+                            <td colspan="6" class="px-5 py-8 text-center text-sm text-slate-500">
+                                No se encontraron empleados con esos filtros.
+                            </td>
+                        </tr>
+                    `;
+                }
+
+                employeesCount.textContent = `${filteredEmployees.length} empleados encontrados`;
+                renderPagination();
+            };
+
+            const applyFilters = () => {
+                const searchTerm = employeeSearchInput.value.trim().toLowerCase();
+                const selectedDepartment = departmentFilter.value;
+
+                filteredEmployees = allEmployees.filter((employee) => {
+                    const fullName = `${employee.first_name} ${employee.last_name}`.toLowerCase();
+                    const employeeNumber = String(employee.emp_no);
+                    const title = (employee.title || '').toLowerCase();
+                    const department = employee.department || '';
+
+                    const matchesSearch =
+                        !searchTerm ||
+                        fullName.includes(searchTerm) ||
+                        employeeNumber.includes(searchTerm) ||
+                        title.includes(searchTerm) ||
+                        department.toLowerCase().includes(searchTerm);
+
+                    const matchesDepartment =
+                        selectedDepartment === 'all' ||
+                        department === selectedDepartment;
+
+                    return matchesSearch && matchesDepartment;
+                });
+
+                currentPage = 1;
+                renderEmployees();
+            };
+
+            const loadEmployees = async () => {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/directory/employees`);
+
+                    if (!response.ok) {
+                        throw new Error('No se pudieron obtener los empleados');
+                    }
+
+                    allEmployees = await response.json();
+                    filteredEmployees = [...allEmployees];
+                    currentPage = 1;
+                    renderEmployees();
+                } catch (error) {
+                    console.error('Error cargando empleados del directorio:', error);
+                    employeesTableBody.innerHTML = `
+                        <tr>
+                            <td colspan="6" class="px-5 py-8 text-center text-sm text-red-500">
+                                No se pudieron cargar los empleados.
+                            </td>
+                        </tr>
+                    `;
+                    employeesCount.textContent = 'No se pudieron cargar los empleados';
+                }
+            };
+
+            prevPageButton.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage -= 1;
+                    renderEmployees();
+                }
+            });
+
+            nextPageButton.addEventListener('click', () => {
+                const totalPages = Math.ceil(filteredEmployees.length / employeesPerPage);
+
+                if (currentPage < totalPages) {
+                    currentPage += 1;
+                    renderEmployees();
+                }
+            });
+
+            employeeSearchInput.addEventListener('input', applyFilters);
+            departmentFilter.addEventListener('change', applyFilters);
+
+            loadEmployees();
+        })();
+    </script>
 </body>
 </html>

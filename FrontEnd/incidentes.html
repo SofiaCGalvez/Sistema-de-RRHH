@@ -144,7 +144,7 @@
                             </div>
 
                             <!-- DERECHA -->
-                            <button class="flex items-center gap-2 bg-red-500 text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-red-600 whitespace-nowrap">
+                            <button id="openIncidentModal" class="flex items-center gap-2 bg-red-500 text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-red-600 whitespace-nowrap">
                                 <i class="ri-alert-line"></i>
                                 Registrar Incidencia
                             </button>
@@ -161,9 +161,10 @@
                                             <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wide">Prioridad</th>
                                             <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wide">Estado</th>
                                             <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wide">Fecha</th>
+                                            <th class="text-left px-5 py-3.5 text-xs font-semibold text-slate-500 uppercase tracking-wide">Acciones</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="divide-y divide-slate-50">
+                                    <tbody id="incidentsTableBody" class="divide-y divide-slate-50">
                                         <tr class="hover:bg-slate-50/60 transition-colors">
                                             <td class="px-5 py-4 text-xs font-mono text-slate-400">#1</td>
                                             <td class="px-5 py-4">
@@ -186,6 +187,11 @@
                                                 </select>
                                             </td>
                                             <td class="px-5 py-4 text-xs text-slate-400">15/3/2024</td>
+                                            <td class="px-5 py-4">
+                                                <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-500 cursor-pointer transition-colors">
+                                                    <i class="ri-delete-bin-line text-base"></i>
+                                                </button>
+                                            </td>
                                         </tr>
                                         <tr class="hover:bg-slate-50/60 transition-colors">
                                             <td class="px-5 py-4 text-xs font-mono text-slate-400">#2</td>
@@ -209,6 +215,11 @@
                                                 </select>
                                             </td>
                                             <td class="px-5 py-4 text-xs text-slate-400">15/3/2024</td>
+                                            <td class="px-5 py-4">
+                                                <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-500 cursor-pointer transition-colors">
+                                                    <i class="ri-delete-bin-line text-base"></i>
+                                                </button>
+                                            </td>
                                         </tr>
                                         <tr class="hover:bg-slate-50/60 transition-colors">
                                             <td class="px-5 py-4 text-xs font-mono text-slate-400">#3</td>
@@ -232,6 +243,11 @@
                                                 </select>
                                             </td>
                                             <td class="px-5 py-4 text-xs text-slate-400">22/6/2024</td>
+                                            <td class="px-5 py-4">
+                                                <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-500 cursor-pointer transition-colors">
+                                                    <i class="ri-delete-bin-line text-base"></i>
+                                                </button>
+                                            </td>
                                         </tr>
                                         <tr class="hover:bg-slate-50/60 transition-colors">
                                             <td class="px-5 py-4 text-xs font-mono text-slate-400">#4</td>
@@ -255,6 +271,11 @@
                                                 </select>
                                             </td>
                                             <td class="px-5 py-4 text-xs text-slate-400">12/6/2024</td>
+                                            <td class="px-5 py-4">
+                                                <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-500 cursor-pointer transition-colors">
+                                                    <i class="ri-delete-bin-line text-base"></i>
+                                                </button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -265,6 +286,401 @@
                 
             </div>
         </div>
+        <div id="incidentModal" class="fixed inset-0 z-[120] hidden items-center justify-center bg-slate-900/35 px-4">
+            <div class="w-full max-w-xl rounded-2xl bg-white shadow-2xl">
+                <div class="flex items-center justify-between border-b border-slate-200 px-5 py-3.5">
+                    <h3 class="text-xl font-semibold text-slate-900">Registrar Incidencia</h3>
+                    <button id="closeIncidentModal" class="flex h-9 w-9 items-center justify-center rounded-full text-slate-400 transition hover:bg-slate-100 hover:text-slate-600" type="button" aria-label="Cerrar modal">
+                        <i class="ri-close-line text-xl"></i>
+                    </button>
+                </div>
+
+                <form id="incidentForm" class="px-5 py-4">
+                    <div class="grid gap-3.5 md:grid-cols-2">
+                        <div>
+                            <label for="employeeId" class="mb-2 block text-sm font-medium text-slate-700">Empleado (ID)</label>
+                            <input id="employeeId" type="text" value="10001" class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-700 outline-none transition focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100">
+                        </div>
+
+                        <div>
+                            <label for="employeeName" class="mb-2 block text-sm font-medium text-slate-700">Nombre del Empleado</label>
+                            <input id="employeeName" type="text" value="Georgi Facello" class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-700 outline-none transition focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100">
+                        </div>
+
+                        <div>
+                            <label for="incidentType" class="mb-2 block text-sm font-medium text-slate-700">Tipo de Incidencia</label>
+                            <select id="incidentType" class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-700 outline-none transition focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100">
+                                <option>Tardanza</option>
+                                <option>Ausentismo</option>
+                                <option>Conflicto Laboral</option>
+                                <option>Accidente Laboral</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="incidentPriority" class="mb-2 block text-sm font-medium text-slate-700">Prioridad</label>
+                            <select id="incidentPriority" class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-700 outline-none transition focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100">
+                                <option>Baja</option>
+                                <option selected>Media</option>
+                                <option>Alta</option>
+                                <option>Critica</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mt-3.5">
+                        <label for="incidentDescription" class="mb-2 block text-sm font-medium text-slate-700">Descripción</label>
+                        <textarea id="incidentDescription" maxlength="500" rows="4" placeholder="Describe la incidencia..." class="w-full resize-none rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-700 outline-none transition focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100"></textarea>
+                        <p class="mt-1.5 text-xs text-slate-400"><span id="descriptionCount">0</span>/500</p>
+                    </div>
+
+                    <p id="incidentFormMessage" class="mt-3 hidden rounded-xl px-3 py-2 text-sm"></p>
+
+                    <div class="mt-5 flex flex-col-reverse gap-2.5 sm:flex-row sm:justify-end">
+                        <button id="cancelIncidentModal" type="button" class="rounded-xl border border-slate-200 px-5 py-2.5 text-sm font-medium text-slate-600 transition hover:bg-slate-50">
+                            Cancelar
+                        </button>
+                        <button id="submitIncidentButton" type="submit" class="rounded-xl bg-red-500 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-red-600">
+                            Registrar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
+
+    <script>
+        const openIncidentModalButton = document.getElementById('openIncidentModal');
+        const incidentModal = document.getElementById('incidentModal');
+        const closeIncidentModalButton = document.getElementById('closeIncidentModal');
+        const cancelIncidentModalButton = document.getElementById('cancelIncidentModal');
+        const incidentForm = document.getElementById('incidentForm');
+        const incidentsTableBody = document.getElementById('incidentsTableBody');
+        const employeeIdInput = document.getElementById('employeeId');
+        const employeeNameInput = document.getElementById('employeeName');
+        const incidentTypeInput = document.getElementById('incidentType');
+        const incidentPriorityInput = document.getElementById('incidentPriority');
+        const incidentDescription = document.getElementById('incidentDescription');
+        const descriptionCount = document.getElementById('descriptionCount');
+        const incidentFormMessage = document.getElementById('incidentFormMessage');
+        const submitIncidentButton = document.getElementById('submitIncidentButton');
+        const API_BASE_URL = 'http://localhost:3000';
+
+        const priorityStyles = {
+            Baja: 'text-emerald-600',
+            Media: 'text-amber-600',
+            Alta: 'text-orange-600',
+            Critica: 'text-red-600'
+        };
+
+        const statusStyles = {
+            pending: 'bg-amber-100 text-amber-700',
+            in_process: 'bg-sky-100 text-sky-700',
+            resolved: 'bg-emerald-100 text-emerald-700',
+            closed: 'bg-slate-100 text-slate-700'
+        };
+
+        const getCurrentDate = () => {
+            const today = new Date();
+            return `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+        };
+
+        const formatDateForDatabase = () => {
+            const today = new Date();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            return `${today.getFullYear()}-${month}-${day}`;
+        };
+
+        const formatDateForTable = (dateValue) => {
+            const date = new Date(dateValue);
+
+            if (Number.isNaN(date.getTime())) {
+                return getCurrentDate();
+            }
+
+            return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+        };
+
+        const truncateText = (text, maxLength = 90) => {
+            if (text.length <= maxLength) {
+                return text;
+            }
+
+            return `${text.slice(0, maxLength).trim()}...`;
+        };
+
+        const showFormMessage = (message, type = 'error') => {
+            incidentFormMessage.textContent = message;
+            incidentFormMessage.className = 'mt-3 rounded-xl px-3 py-2 text-sm';
+
+            if (type === 'success') {
+                incidentFormMessage.classList.add('bg-emerald-50', 'text-emerald-600');
+                return;
+            }
+
+            incidentFormMessage.classList.add('bg-red-50', 'text-red-600');
+        };
+
+        const clearFormMessage = () => {
+            incidentFormMessage.textContent = '';
+            incidentFormMessage.className = 'mt-3 hidden rounded-xl px-3 py-2 text-sm';
+        };
+
+        const setSubmittingState = (isSubmitting) => {
+            submitIncidentButton.disabled = isSubmitting;
+            submitIncidentButton.textContent = isSubmitting ? 'Guardando...' : 'Registrar';
+            submitIncidentButton.classList.toggle('opacity-70', isSubmitting);
+            submitIncidentButton.classList.toggle('cursor-not-allowed', isSubmitting);
+        };
+
+        const fetchEmployeeById = async (employeeId) => {
+            const response = await fetch(`${API_BASE_URL}/employees`);
+
+            if (!response.ok) {
+                throw new Error('No se pudo consultar la lista de empleados');
+            }
+
+            const employees = await response.json();
+            const employee = employees.find((item) => String(item.emp_no) === String(employeeId));
+
+            if (!employee) {
+                throw new Error('Empleado no encontrado');
+            }
+
+            return employee;
+        };
+
+        const applyStatusStyles = (select, status) => {
+            select.className = `text-xs font-medium px-2.5 py-1 rounded-full border-0 cursor-pointer focus:outline-none ${statusStyles[status] || statusStyles.pending}`;
+        };
+
+        const createStatusSelect = (status, incidentId) => {
+            const select = document.createElement('select');
+            select.innerHTML = `
+                <option value="pending">Pendiente</option>
+                <option value="in_process">En Proceso</option>
+                <option value="resolved">Resuelta</option>
+                <option value="closed">Cerrada</option>
+            `;
+            select.value = status;
+            applyStatusStyles(select, status);
+
+            select.addEventListener('change', async () => {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/incidents/${incidentId}/status`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ status: select.value })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('No se pudo actualizar el estado');
+                    }
+
+                    applyStatusStyles(select, select.value);
+                } catch (error) {
+                    console.error('Error actualizando el estado de la incidencia:', error);
+                }
+            });
+
+            return select;
+        };
+
+        const createIncidentRow = (incident) => {
+            const row = document.createElement('tr');
+            row.className = 'hover:bg-slate-50/60 transition-colors';
+            row.innerHTML = `
+                <td class="px-5 py-4 text-xs font-mono text-slate-400">#${incident.id}</td>
+                <td class="px-5 py-4">
+                    <p class="text-sm font-semibold text-slate-800">${incident.employeeName}</p>
+                    <p class="text-xs text-slate-400">${incident.employeeMeta}</p>
+                </td>
+                <td class="px-5 py-4 text-sm text-slate-600">${incident.type}</td>
+                <td class="px-5 py-4 text-sm text-slate-500 max-w-xs">
+                    <p class="truncate" title="${incident.description}">${truncateText(incident.description)}</p>
+                </td>
+                <td class="px-5 py-4">
+                    <span class="text-xs font-semibold ${priorityStyles[incident.priority] || 'text-slate-600'}">${incident.priority}</span>
+                </td>
+                <td class="px-5 py-4"></td>
+                <td class="px-5 py-4 text-xs text-slate-400">${incident.date}</td>
+                <td class="px-5 py-4">
+                    <button class="delete-incident-button w-8 h-8 flex items-center justify-center rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-500 cursor-pointer transition-colors" type="button" aria-label="Eliminar incidencia">
+                        <i class="ri-delete-bin-line text-base"></i>
+                    </button>
+                </td>
+            `;
+
+            row.querySelector('td:nth-child(6)').appendChild(createStatusSelect(incident.status, incident.id));
+            row.querySelector('.delete-incident-button').addEventListener('click', async () => {
+                const shouldDelete = window.confirm('¿Deseas eliminar esta incidencia?');
+
+                if (!shouldDelete) {
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`${API_BASE_URL}/incidents/${incident.id}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json().catch(() => ({}));
+                        throw new Error(errorData.error || 'No se pudo eliminar la incidencia');
+                    }
+
+                    await loadIncidents();
+                } catch (error) {
+                    console.error('Error eliminando incidencia:', error);
+                    showFormMessage(error.message || 'No se pudo eliminar la incidencia.');
+                }
+            });
+            return row;
+        };
+
+        const renderIncidents = (incidents) => {
+            incidentsTableBody.innerHTML = '';
+            incidents.forEach((incident) => {
+                incidentsTableBody.appendChild(createIncidentRow(incident));
+            });
+        };
+
+        const loadIncidents = async () => {
+            try {
+                const response = await fetch(`${API_BASE_URL}/incidents`);
+
+                if (!response.ok) {
+                    throw new Error('No se pudieron obtener las incidencias');
+                }
+
+                const incidents = await response.json();
+                const normalizedIncidents = incidents.map((incident) => ({
+                    id: String(incident.incident_id),
+                    employeeName: incident.employee_name,
+                    employeeMeta: `ID: ${incident.employee_id}`,
+                    type: incident.incident_type,
+                    description: incident.description,
+                    priority: incident.priority,
+                    status: incident.status,
+                    date: formatDateForTable(incident.incident_date)
+                }));
+
+                renderIncidents(normalizedIncidents);
+            } catch (error) {
+                console.error('Error cargando incidencias:', error);
+            }
+        };
+
+        const resetIncidentForm = () => {
+            incidentForm.reset();
+            employeeIdInput.value = '10001';
+            employeeNameInput.value = 'Georgi Facello';
+            incidentPriorityInput.value = 'Media';
+            descriptionCount.textContent = '0';
+            clearFormMessage();
+        };
+
+        const openIncidentModal = () => {
+            incidentModal.classList.remove('hidden');
+            incidentModal.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+        };
+
+        const closeIncidentModal = () => {
+            incidentModal.classList.add('hidden');
+            incidentModal.classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
+        };
+
+        openIncidentModalButton.addEventListener('click', openIncidentModal);
+        closeIncidentModalButton.addEventListener('click', closeIncidentModal);
+        cancelIncidentModalButton.addEventListener('click', closeIncidentModal);
+
+        incidentModal.addEventListener('click', (event) => {
+            if (event.target === incidentModal) {
+                closeIncidentModal();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !incidentModal.classList.contains('hidden')) {
+                closeIncidentModal();
+            }
+        });
+
+        incidentDescription.addEventListener('input', () => {
+            descriptionCount.textContent = incidentDescription.value.length;
+        });
+
+        employeeIdInput.addEventListener('blur', async () => {
+            const employeeId = employeeIdInput.value.trim();
+
+            if (!employeeId) {
+                return;
+            }
+
+            try {
+                const employee = await fetchEmployeeById(employeeId);
+                employeeNameInput.value = `${employee.first_name} ${employee.last_name}`;
+                clearFormMessage();
+            } catch (error) {
+                showFormMessage('El ID del empleado no existe en la base de datos.');
+            }
+        });
+
+        incidentForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const employeeId = employeeIdInput.value.trim();
+            const incidentType = incidentTypeInput.value;
+            const incidentPriority = incidentPriorityInput.value;
+            const description = incidentDescription.value.trim();
+
+            if (!employeeId || !description) {
+                showFormMessage('Completa el ID del empleado y la descripción.');
+                return;
+            }
+
+            try {
+                clearFormMessage();
+                setSubmittingState(true);
+                const employee = await fetchEmployeeById(employeeId);
+                employeeNameInput.value = `${employee.first_name} ${employee.last_name}`;
+
+                const response = await fetch(`${API_BASE_URL}/incidents`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        employee_id: Number(employeeId),
+                        incident_type: incidentType,
+                        priority: incidentPriority,
+                        status: 'pending',
+                        description,
+                        incident_date: formatDateForDatabase()
+                    })
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({}));
+                    throw new Error(errorData.error || 'No se pudo registrar la incidencia');
+                }
+
+                await loadIncidents();
+                resetIncidentForm();
+                closeIncidentModal();
+            } catch (error) {
+                console.error('Error registrando incidencia:', error);
+                showFormMessage(error.message || 'Ocurrió un error al registrar la incidencia.');
+            } finally {
+                setSubmittingState(false);
+            }
+        });
+
+        loadIncidents();
+    </script>
 </body>
 </html>

@@ -116,7 +116,101 @@
                         </div>
                     </div>
                 </header>
-                
+                <main class="flex-1 p-6 mt-[70px] overflow-auto">
+                    <div class="space-y-5">
+                        <div>
+                            <h2 class="text-lg font-bold text-slate-800">Historial Laboral y Salarial</h2>
+                            <p class="text-sm text-slate-500 mt-0.5">Selecciona un empleado para ver su trayectoria completa de puestos y salarios</p>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="bg-white rounded-xl border border-slate-100 p-4 flex items-center gap-3">
+                                <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
+                                    <i class="ri-user-line text-lg"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-slate-800">12</p>
+                                    <p class="text-xs text-slate-400">Empleados con historial</p>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-xl border border-slate-100 p-4 flex items-center gap-3">
+                                <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-amber-50 text-amber-600">
+                                    <i class="ri-briefcase-line text-lg"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-slate-800">10</p>
+                                    <p class="text-xs text-slate-400">Registros totales</p>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-xl border border-slate-100 p-4 flex items-center gap-3">
+                                <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-sky-50 text-sky-600">
+                                    <i class="ri-arrow-up-line text-lg"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-slate-800">4</p>
+                                    <p class="text-xs text-slate-400">Promociones registradas</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+                            <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between p-5 border-b border-slate-100">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-5 h-5 flex items-center justify-center text-emerald-500">
+                                        <i class="ri-team-line"></i>
+                                    </div>
+                                    <span class="font-semibold text-slate-800 text-sm">Empleados</span>
+                                    <span class="text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full font-medium">12</span>
+                                </div>
+                                <div class="relative w-full sm:w-64">
+                                    <div class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 flex items-center justify-center text-slate-400">
+                                        <i class="ri-search-line text-sm"></i>
+                                    </div>
+                                    <input placeholder="Buscar por nombre, puesto..." class="w-full pl-9 pr-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-50 bg-slate-50" type="text" value>
+                                </div>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="w-full">
+                                    <thead>
+                                        <tr class="bg-slate-50 border-b border-slate-100">
+                                            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wide">Empleado</th>
+                                            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wide">Departamento</th>
+                                            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wide">Puesto Actual</th>
+                                            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wide">Salario actual</th>
+                                            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wide">Registrados</th>
+                                            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wide">Accion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-50">
+                                        <tr class="hover:bg-slate-50/70 transition-colors group">
+                                            <td class="px-5 py-3.5">
+                                                <div>
+                                                    <p class="text-sm font-semibold text-slate-800">Georgi Facello</p>
+                                                    <p class="text-xs text-slate-400">#10001</p>
+                                                </div>
+                                            </td>
+                                            <td class="px-4 py-3.5">
+                                                <span class="text-sm text-slate-600">Development</span>
+                                            </td>
+                                            <td class="px-4 py-3.5">
+                                                <span class="text-sm text-slate-600">Senior Engineer</span>
+                                            </td>
+                                            <td class="px-4 py-3.5">
+                                                <span class="text-sm font-semibold text-emerald-600">$88,958</span>
+                                            </td>
+                                            <td class="px-4 py-3.5 text-center">
+                                                <span class="inline-flex items-center justify-center w-7 h-7 bg-slate-100 text-slate-600 rounded-full text-xs font-bold">3</span>
+                                            </td>
+                                            <td class="px-5 py-3.5 text-right">
+                                                <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-emerald-50 text-emerald-700 rounded-lg hover:bg-emerald-100 transition-colors cursor-pointer whitespace-nowrap">Ver historial
+                                                    <i class="ri-arrow-right-line"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
             </div>
         </div>
     </div>
