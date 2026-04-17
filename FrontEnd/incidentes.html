@@ -125,21 +125,21 @@
                             <!-- IZQUIERDA -->
                             <div class="flex gap-3 flex-wrap">
                                 <div class="relative">
-                                    <select class="border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-emerald-400 bg-white text-slate-700"">
+                                    <select id="statusFilter" class="border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-emerald-400 bg-white text-slate-700">
                                     <option value="all">Todos los estados</option>
-                                    <option value="Development">Pendiente</option>
-                                    <option value="Sales">En Proceso</option>
-                                    <option value="Production">Resuelta</option>
-                                    <option value="Human Resources">Cerrada</option>
+                                    <option value="pending">Pendiente</option>
+                                    <option value="in_process">En Proceso</option>
+                                    <option value="resolved">Resuelta</option>
+                                    <option value="closed">Cerrada</option>
                                 </select>
                                 </div>
 
-                                <select class="border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-emerald-400 bg-white text-slate-700"">
-                                    <option value="all">Todos las prioridades</option>
-                                    <option value="Development">Baja</option>
-                                    <option value="Sales">Media</option>
-                                    <option value="Production">Alta</option>
-                                    <option value="Human Resources">Critica</option>
+                                <select id="priorityFilter" class="border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-emerald-400 bg-white text-slate-700">
+                                    <option value="all">Todas las prioridades</option>
+                                    <option value="Baja">Baja</option>
+                                    <option value="Media">Media</option>
+                                    <option value="Alta">Alta</option>
+                                    <option value="Critica">Critica</option>
                                 </select>
                             </div>
 
@@ -289,7 +289,7 @@
         <div id="incidentModal" class="fixed inset-0 z-[120] hidden items-center justify-center bg-slate-900/35 px-4">
             <div class="w-full max-w-xl rounded-2xl bg-white shadow-2xl">
                 <div class="flex items-center justify-between border-b border-slate-200 px-5 py-3.5">
-                    <h3 class="text-xl font-semibold text-slate-900">Registrar Incidencia</h3>
+                    <h3 id="incidentModalTitle" class="text-xl font-semibold text-slate-900">Registrar Incidencia</h3>
                     <button id="closeIncidentModal" class="flex h-9 w-9 items-center justify-center rounded-full text-slate-400 transition hover:bg-slate-100 hover:text-slate-600" type="button" aria-label="Cerrar modal">
                         <i class="ri-close-line text-xl"></i>
                     </button>
@@ -354,8 +354,11 @@
         const incidentModal = document.getElementById('incidentModal');
         const closeIncidentModalButton = document.getElementById('closeIncidentModal');
         const cancelIncidentModalButton = document.getElementById('cancelIncidentModal');
+        const incidentModalTitle = document.getElementById('incidentModalTitle');
         const incidentForm = document.getElementById('incidentForm');
         const incidentsTableBody = document.getElementById('incidentsTableBody');
+        const statusFilter = document.getElementById('statusFilter');
+        const priorityFilter = document.getElementById('priorityFilter');
         const employeeIdInput = document.getElementById('employeeId');
         const employeeNameInput = document.getElementById('employeeName');
         const incidentTypeInput = document.getElementById('incidentType');
@@ -365,6 +368,8 @@
         const incidentFormMessage = document.getElementById('incidentFormMessage');
         const submitIncidentButton = document.getElementById('submitIncidentButton');
         const API_BASE_URL = 'http://localhost:3000';
+        let allIncidents = [];
+        let editingIncidentId = null;
 
         const priorityStyles = {
             Baja: 'text-emerald-600',
@@ -481,6 +486,11 @@
                     }
 
                     applyStatusStyles(select, select.value);
+                    const updatedIncident = allIncidents.find((incident) => String(incident.id) === String(incidentId));
+                    if (updatedIncident) {
+                        updatedIncident.status = select.value;
+                    }
+                    applyFilters();
                 } catch (error) {
                     console.error('Error actualizando el estado de la incidencia:', error);
                 }
@@ -508,13 +518,31 @@
                 <td class="px-5 py-4"></td>
                 <td class="px-5 py-4 text-xs text-slate-400">${incident.date}</td>
                 <td class="px-5 py-4">
-                    <button class="delete-incident-button w-8 h-8 flex items-center justify-center rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-500 cursor-pointer transition-colors" type="button" aria-label="Eliminar incidencia">
-                        <i class="ri-delete-bin-line text-base"></i>
-                    </button>
+                    <div class="flex items-center gap-1">
+                        <button class="edit-incident-button w-8 h-8 flex items-center justify-center rounded-lg hover:bg-emerald-50 text-slate-400 hover:text-emerald-600 cursor-pointer transition-colors" type="button" aria-label="Editar incidencia">
+                            <i class="ri-edit-line text-base"></i>
+                        </button>
+                        <button class="delete-incident-button w-8 h-8 flex items-center justify-center rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-500 cursor-pointer transition-colors" type="button" aria-label="Eliminar incidencia">
+                            <i class="ri-delete-bin-line text-base"></i>
+                        </button>
+                    </div>
                 </td>
             `;
 
             row.querySelector('td:nth-child(6)').appendChild(createStatusSelect(incident.status, incident.id));
+            row.querySelector('.edit-incident-button').addEventListener('click', () => {
+                editingIncidentId = incident.id;
+                incidentModalTitle.textContent = 'Editar Incidencia';
+                submitIncidentButton.textContent = 'Guardar cambios';
+                employeeIdInput.value = incident.employeeId;
+                employeeNameInput.value = incident.employeeName;
+                incidentTypeInput.value = incident.type;
+                incidentPriorityInput.value = incident.priority;
+                incidentDescription.value = incident.description;
+                descriptionCount.textContent = incident.description.length;
+                clearFormMessage();
+                openIncidentModal();
+            });
             row.querySelector('.delete-incident-button').addEventListener('click', async () => {
                 const shouldDelete = window.confirm('¿Deseas eliminar esta incidencia?');
 
@@ -543,9 +571,35 @@
 
         const renderIncidents = (incidents) => {
             incidentsTableBody.innerHTML = '';
+
+            if (!incidents.length) {
+                incidentsTableBody.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="px-5 py-8 text-center text-sm text-slate-500">
+                            No se encontraron incidencias con esos filtros.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
             incidents.forEach((incident) => {
                 incidentsTableBody.appendChild(createIncidentRow(incident));
             });
+        };
+
+        const applyFilters = () => {
+            const selectedStatus = statusFilter.value;
+            const selectedPriority = priorityFilter.value;
+
+            const filteredIncidents = allIncidents.filter((incident) => {
+                const matchesStatus = selectedStatus === 'all' || incident.status === selectedStatus;
+                const matchesPriority = selectedPriority === 'all' || incident.priority === selectedPriority;
+
+                return matchesStatus && matchesPriority;
+            });
+
+            renderIncidents(filteredIncidents);
         };
 
         const loadIncidents = async () => {
@@ -559,28 +613,34 @@
                 const incidents = await response.json();
                 const normalizedIncidents = incidents.map((incident) => ({
                     id: String(incident.incident_id),
+                    employeeId: String(incident.employee_id),
                     employeeName: incident.employee_name,
                     employeeMeta: `ID: ${incident.employee_id}`,
                     type: incident.incident_type,
                     description: incident.description,
                     priority: incident.priority,
                     status: incident.status,
-                    date: formatDateForTable(incident.incident_date)
+                    date: formatDateForTable(incident.incident_date),
+                    rawDate: incident.incident_date
                 }));
 
-                renderIncidents(normalizedIncidents);
+                allIncidents = normalizedIncidents;
+                applyFilters();
             } catch (error) {
                 console.error('Error cargando incidencias:', error);
             }
         };
 
         const resetIncidentForm = () => {
+            editingIncidentId = null;
             incidentForm.reset();
+            incidentModalTitle.textContent = 'Registrar Incidencia';
             employeeIdInput.value = '10001';
             employeeNameInput.value = 'Georgi Facello';
             incidentPriorityInput.value = 'Media';
             descriptionCount.textContent = '0';
             clearFormMessage();
+            submitIncidentButton.textContent = 'Registrar';
         };
 
         const openIncidentModal = () => {
@@ -595,21 +655,35 @@
             document.body.classList.remove('overflow-hidden');
         };
 
-        openIncidentModalButton.addEventListener('click', openIncidentModal);
-        closeIncidentModalButton.addEventListener('click', closeIncidentModal);
-        cancelIncidentModalButton.addEventListener('click', closeIncidentModal);
+        openIncidentModalButton.addEventListener('click', () => {
+            resetIncidentForm();
+            openIncidentModal();
+        });
+        closeIncidentModalButton.addEventListener('click', () => {
+            closeIncidentModal();
+            resetIncidentForm();
+        });
+        cancelIncidentModalButton.addEventListener('click', () => {
+            closeIncidentModal();
+            resetIncidentForm();
+        });
 
         incidentModal.addEventListener('click', (event) => {
             if (event.target === incidentModal) {
                 closeIncidentModal();
+                resetIncidentForm();
             }
         });
 
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape' && !incidentModal.classList.contains('hidden')) {
                 closeIncidentModal();
+                resetIncidentForm();
             }
         });
+
+        statusFilter.addEventListener('change', applyFilters);
+        priorityFilter.addEventListener('change', applyFilters);
 
         incidentDescription.addEventListener('input', () => {
             descriptionCount.textContent = incidentDescription.value.length;
@@ -649,24 +723,37 @@
                 const employee = await fetchEmployeeById(employeeId);
                 employeeNameInput.value = `${employee.first_name} ${employee.last_name}`;
 
-                const response = await fetch(`${API_BASE_URL}/incidents`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        employee_id: Number(employeeId),
-                        incident_type: incidentType,
-                        priority: incidentPriority,
-                        status: 'pending',
-                        description,
-                        incident_date: formatDateForDatabase()
+                const response = editingIncidentId
+                    ? await fetch(`${API_BASE_URL}/incidents/${editingIncidentId}`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            employee_id: Number(employeeId),
+                            incident_type: incidentType,
+                            priority: incidentPriority,
+                            description
+                        })
                     })
-                });
+                    : await fetch(`${API_BASE_URL}/incidents`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            employee_id: Number(employeeId),
+                            incident_type: incidentType,
+                            priority: incidentPriority,
+                            status: 'pending',
+                            description,
+                            incident_date: formatDateForDatabase()
+                        })
+                    });
 
                 if (!response.ok) {
                     const errorData = await response.json().catch(() => ({}));
-                    throw new Error(errorData.error || 'No se pudo registrar la incidencia');
+                    throw new Error(errorData.error || (editingIncidentId ? 'No se pudo actualizar la incidencia' : 'No se pudo registrar la incidencia'));
                 }
 
                 await loadIncidents();

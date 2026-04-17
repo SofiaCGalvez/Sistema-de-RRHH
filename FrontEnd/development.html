@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/vite.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees</title>
+    <link rel="stylesheet" href="./dist/output.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div id="id">
+        <div class="min-h-screen bg-slate-50 flex">
+            <aside class="fixed left-0 top-0 h-full z-30 flex flex-col transition-all duration-300 w-[260px]" style="background: linear-gradient(rgb(30, 41, 59) 0%, rgb(15, 23, 42) 100%);">
+                <div class="flex items-center gap-3 px-4 py-5 border-b border-white/10 ">
+                    <div class="w-10 h-10 flex items-center justify-center flex-shrink-0">
+                        <img alt="HR System Logo" class="w-10 h-10 object-contain rounded-lg" src="https://public.readdy.ai/ai/img_res/ca025dc2-66b8-45cb-9b91-c50b6f856625.png">
+                    </div>
+                    <div>
+                        <p class="text-white font-bold text-base leading-tight whitespace-nowrap" style="font-family: Inter, sans-serif;"> HR Manager</p>
+                        <p class="text-slate-400 text-xs">Sistema de RRHH</p>
+                    </div>
+                </div>
+                <nav class="flex-1 px-3 py-4 overflow-y-auto">
+                    <ul class="space-y-1">
+                        <li>
+                            <a class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 cursor-pointer group text-slate-400 hover:bg-slate-700/60 hover:text-white" href="index.html" aria-current="page">
+                                <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                    <i class="ri-dashboard-3-line text-lg"></i>
+                                </div>
+                                <span class="text-sm font-medium whitespace-nowrap">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 cursor-pointer group text-slate-400 hover:bg-slate-700/60 hover:text-white" href="directory.html" aria-current="page">
+                                <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                    <i class="ri-team-line text-lg"></i>
+                                </div>
+                                <span class="text-sm font-medium whitespace-nowrap">Directorio de Empleados</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 cursor-pointer group bg-emerald-500 text-white shadow-lg" href="departments.html" aria-current="page">
+                                <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                    <i class="ri-team-line text-lg"></i>
+                                </div>
+                                <span class="text-sm font-medium whitespace-nowrap">Departamentos</span>
+                                <div class="ml-auto w-1.5 h-1.5 rounded-full bg-white/70"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 cursor-pointer group text-slate-400 hover:bg-slate-700/60 hover:text-white" href="salarios.html" aria-current="page">
+                                <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                    <i class="ri-history-line text-lg"></i>
+                                </div>
+                                <span class="text-sm font-medium whitespace-nowrap">Historial laboral & Salarios</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 cursor-pointer group text-slate-400 hover:bg-slate-700/60 hover:text-white" href="incidentes.html" aria-current="page">
+                                <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                    <i class="ri-alert-line text-lg"></i>
+                                </div>
+                                <span class="text-sm font-medium whitespace-nowrap">Incidencias</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 cursor-pointer group text-slate-400 hover:bg-slate-700/60 hover:text-white" href="ajustes.html" aria-current="page">
+                                <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                    <i class="ri-settings-3-line text-lg"></i>
+                                </div>
+                                <span class="text-sm font-medium whitespace-nowrap">Ajustes</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="border-t border-white/10 p-4 ">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-sm font-bold">A</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-white text-sm font-semibold truncate">Admin User</p>
+                            <p class="text-slate-400 text-xs truncate">HR Administrator</p>
+                        </div>
+                        <button class="w-6 h-6 flex items-center justify-center text-slate-400 hover:text-white cursor-pointer">
+                            <i class="ri-arrow-left-s-line text-lg"></i>
+                        </button>
+                    </div>
+                </div>
+            </aside>
+            <div class="flex-1 flex flex-col min-h-screen transition-all duration-300" style="margin-left: 260px;">
+                <header class="fixed top-0 right-0 z-20 bg-white border-b border-slate-100 flex items-center px-6 transition-all duration-300" style="left: 260px; height: 70px;">
+                    <div class="flex-1">
+                        <h2 class="text-xl font-bold text-slate-800" style="font-family: Inter, sans-serif;">HR Manager</h2>
+                    </div>
+                    <div class="relative mx-6 hidden md:block">
+                        <div class="w-5 h-5 flex items-center justify-center absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
+                            <i class="ri-search-line text-sm"></i>
+                        </div>
+                        <input placeholder="Buscar empleados, departamentos..." class="bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-4 py-2.5 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 w-72 transition-all" type="text" value="">
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="relative">
+                            <button class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 cursor-pointer transition-colors relative">
+                                <i class="ri-notification-3-line text-lg"></i>
+                                <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
+                            </button>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500 flex items-center justify-center cursor-pointer">
+                            <span class="text-white text-sm font-bold">A</span>
+                        </div>
+                    </div>
+                </header>
+                <main class="flex-1 p-6 mt-[70px] overflow-auto">
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-2 text-sm text-slate-500">
+                            <a href="departments.html" class="hover:text-emerald-600 cursor-pointer transition-colors flex items-center gap-1 whitespace-nowrap">
+                                <i class="ri-arrow-left-line"></i>
+                                Departamentos
+                            </a>
+                            <i class="ri-arrow-right-s-line text-slate-300"></i>
+                            <span class="text-slate-700 font-medium">Development</span>
+                        </div>
+                    
+                    <div class="rounded-2xl p-6 text-white relative overflow-hidden" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.867) 0%, rgba(245, 158, 11, 0.6) 100%);">
+                        <div class="relative z-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                            <div>
+                                <p class="text-white/70 text-xs font-mono mb-1">d005</p>
+                            <h2 class="text-2xl font-bold">Development</h2>
+                            <div class="flex flex-wrap gap-4 mt-3">
+                                <div class="flex items-center gap-1.5 text-sm text-white/80">
+                                    <i class="ri-user-star-line"></i>
+                                    <span>
+                                        <strong class="text-white">Gerente: Leon DasSarma</strong>
+                                    </span>
+                                </div>
+                                <div class="flex items-center gap-1.5 text-sm text-white/80">
+                                    <i class="ri-team-line"></i>
+                                    <span>
+                                        <strong class="text-white">61386</strong>
+                                        empleados totales
+                                    </span>
+                                </div>
+                                <div class="flex items-center gap-1.5 text-sm text-white/80">
+                                    <i class="ri-money-dollar-circle-line"></i>
+                                    <span>
+                                        Salario prom.
+                                        <strong class="text-white">USD 67,658</strong>
+                                    </span>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <div class="bg-white/20 backdrop-blur-sm rounded-xl px-4 py-3 text-center min-w-[80px]">
+                                    <p class="text-2xl font-bold">20</p>
+                                    <p class="text-xs text-white/70 mt-0.5">en sistema</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 w-32 h-32 rounded-full bg-white/10"></div>
+                        <div class="absolute -top-4 right-20 w-20 h-20 rounded-full bg-white/10"></div>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+                        <div class="p-4 border-b border-slate-100 flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
+                            <div class="relative flex-1 max-w-xs">
+                                <div class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 flex items-center justify-center text-slate-400">
+                                    <i class="ri-search-line text-sm"></i>
+                                </div>
+                                <input id="developmentSearchInput" placeholder="Buscar por nombre, puesto o ID..." class="w-full pl-9 pr-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-50 placeholder-slate-400" type="text" value>
+                            </div>
+                            <p id="developmentResultsCount" class="text-xs text-slate-400 whitespace-nowrap">Cargando resultados...</p>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="bg-slate-50/70">
+                                        <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">ID</th>
+                                        <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide cursor-pointer select-none hover:text-slate-700 transition-colors whitespace-nowrap">Empleado
+                                            <span class="ml-1 inline-flex flex-col items-center justify-center w-3 h-3">
+                                                <i class="ri-arrow-up-s-line text-xs leading-none" style="color: rgb(59, 130, 246);"></i>
+                                            </span>
+                                        </th>
+                                        <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Puesto</th>
+                                        <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide cursor-pointer select-none hover:text-slate-700 transition-colors whitespace-nowrap">Salario
+                                            <span class="ml-1 inline-flex flex-col items-center justify-center w-3 h-3">
+                                                <i class="ri-arrow-up-down-line text-xs leading-none text-slate-300"></i>
+                                            </span>
+                                        </th>
+                                        <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Genero</th>
+                                        <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide cursor-pointer select-none hover:text-slate-700 transition-colors whitespace-nowrap">Contratacion
+                                            <span class="ml-1 inline-flex flex-col items-center justify-center w-3 h-3">
+                                                <i class="ri-arrow-up-down-line text-xs leading-none text-slate-300"></i>
+                                            </span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="developmentEmployeesTableBody" class="divide-y divide-slate-50">
+                                    <tr class="hover:bg-slate-50/60 transition-colors">
+                                        <td class="px-5 py-3.5">
+                                            <span class="text-xs font-mono text-slate-400 bg-slate-100 px-2 py-0.5 rounded-md">#10006</span>
+                                        </td>
+                                        <td class="px-5 py-3.5">
+                                            <div>
+                                                <div>
+                                                    <p class="text-sm font-semibold text-slate-800">Anneke Preusing</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-5 py-3.5">
+                                            <span class="text-sm text-slate-600">Senior Engineer</span>
+                                        </td>
+                                        <td class="px-5 py-3.5">
+                                            <span class="text-sm font-bold" style="color: rgb(59, 130, 246);">$80,013</span>
+                                        </td>
+                                        <td class="px-5 py-3.5">
+                                            <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-pink-50 text-pink-700" >Femenino</span>
+                                        </td>
+                                        <td class="px-5 py-3.5">
+                                            <span class="text-sm text-slate-500" >1989-06-02</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    <script>
+        (() => {
+            const API_BASE_URL = 'http://localhost:3000';
+            const DEPARTMENT_ID = 'd005';
+            const EMPLOYEE_LIMIT = 20;
+            const searchInput = document.getElementById('developmentSearchInput');
+            const resultsCount = document.getElementById('developmentResultsCount');
+            const tableBody = document.getElementById('developmentEmployeesTableBody');
+            let allEmployees = [];
+
+            const formatDate = (dateValue) => {
+                const date = new Date(dateValue);
+                if (Number.isNaN(date.getTime())) {
+                    return dateValue || 'N/D';
+                }
+
+                return date.toISOString().split('T')[0];
+            };
+
+            const formatCurrency = (value) => new Intl.NumberFormat('es-MX', {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 0
+            }).format(value || 0);
+
+            const formatGender = (gender) => {
+                if (gender === 'F') {
+                    return {
+                        label: 'Femenino',
+                        className: 'bg-pink-50 text-pink-700'
+                    };
+                }
+
+                if (gender === 'M') {
+                    return {
+                        label: 'Masculino',
+                        className: 'bg-sky-50 text-sky-700'
+                    };
+                }
+
+                return {
+                    label: gender || 'N/D',
+                    className: 'bg-slate-100 text-slate-700'
+                };
+            };
+
+            const createEmployeeRow = (employee) => {
+                const row = document.createElement('tr');
+                const gender = formatGender(employee.gender);
+
+                row.className = 'hover:bg-slate-50/60 transition-colors';
+                row.innerHTML = `
+                    <td class="px-5 py-3.5">
+                        <span class="text-xs font-mono text-slate-400 bg-slate-100 px-2 py-0.5 rounded-md">#${employee.emp_no}</span>
+                    </td>
+                    <td class="px-5 py-3.5">
+                        <div>
+                            <div>
+                                <p class="text-sm font-semibold text-slate-800">${employee.first_name} ${employee.last_name}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-5 py-3.5">
+                        <span class="text-sm text-slate-600">${employee.title}</span>
+                    </td>
+                    <td class="px-5 py-3.5">
+                        <span class="text-sm font-bold" style="color: rgb(59, 130, 246);">${formatCurrency(employee.salary)}</span>
+                    </td>
+                    <td class="px-5 py-3.5">
+                        <span class="text-xs font-medium px-2.5 py-1 rounded-full ${gender.className}">${gender.label}</span>
+                    </td>
+                    <td class="px-5 py-3.5">
+                        <span class="text-sm text-slate-500">${formatDate(employee.hire_date)}</span>
+                    </td>
+                `;
+
+                return row;
+            };
+
+            const renderEmployees = (employees) => {
+                tableBody.innerHTML = '';
+
+                if (!employees.length) {
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="6" class="px-5 py-8 text-center text-sm text-slate-500">
+                                No se encontraron empleados.
+                            </td>
+                        </tr>
+                    `;
+                    resultsCount.textContent = '0 resultados';
+                    return;
+                }
+
+                employees.forEach((employee) => {
+                    tableBody.appendChild(createEmployeeRow(employee));
+                });
+
+                resultsCount.textContent = `${employees.length} resultados`;
+            };
+
+            const applySearch = () => {
+                const searchTerm = searchInput.value.trim().toLowerCase();
+                const filteredEmployees = allEmployees.filter((employee) => {
+                    const fullName = `${employee.first_name} ${employee.last_name}`.toLowerCase();
+                    const title = (employee.title || '').toLowerCase();
+                    const employeeId = String(employee.emp_no);
+
+                    return (
+                        !searchTerm ||
+                        fullName.includes(searchTerm) ||
+                        title.includes(searchTerm) ||
+                        employeeId.includes(searchTerm)
+                    );
+                });
+
+                renderEmployees(filteredEmployees);
+            };
+
+            const loadEmployees = async () => {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/api/departments/${DEPARTMENT_ID}/employees?limit=${EMPLOYEE_LIMIT}`);
+
+                    if (!response.ok) {
+                        throw new Error('No se pudieron obtener los empleados de Development');
+                    }
+
+                    allEmployees = await response.json();
+                    renderEmployees(allEmployees);
+                } catch (error) {
+                    console.error('Error cargando empleados de Development:', error);
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="6" class="px-5 py-8 text-center text-sm text-red-500">
+                                No se pudieron cargar los empleados.
+                            </td>
+                        </tr>
+                    `;
+                    resultsCount.textContent = 'No se pudieron cargar los resultados';
+                }
+            };
+
+            searchInput.addEventListener('input', applySearch);
+            loadEmployees();
+        })();
+    </script>
+</body>
+</html>

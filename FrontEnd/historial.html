@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/vite.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees</title>
+    <link rel="stylesheet" href="./dist/output.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div id="id">
+        <div class="min-h-screen bg-slate-50 flex">
+            <aside class="fixed left-0 top-0 h-full z-30 flex flex-col transition-all duration-300 w-[260px]" style="background: linear-gradient(rgb(30, 41, 59) 0%, rgb(15, 23, 42) 100%);">
+                <div class="flex items-center gap-3 px-4 py-5 border-b border-white/10 ">
+                    <div class="w-10 h-10 flex items-center justify-center flex-shrink-0">
+                        <img alt="HR System Logo" class="w-10 h-10 object-contain rounded-lg" src="https://public.readdy.ai/ai/img_res/ca025dc2-66b8-45cb-9b91-c50b6f856625.png">
+                    </div>
+                    <div>
+                        <p class="text-white font-bold text-base leading-tight whitespace-nowrap" style="font-family: Inter, sans-serif;"> HR Manager</p>
+                        <p class="text-slate-400 text-xs">Sistema de RRHH</p>
+                    </div>
+                </div>
+                <nav class="flex-1 px-3 py-4 overflow-y-auto">
+                    <ul class="space-y-1">
+                        <li>
+                            <a class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 cursor-pointer group text-slate-400 hover:bg-slate-700/60 hover:text-white" href="index.html" aria-current="page">
+                                <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                    <i class="ri-dashboard-3-line text-lg"></i>
+                                </div>
+                                <span class="text-sm font-medium whitespace-nowrap">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 cursor-pointer group text-slate-400 hover:bg-slate-700/60 hover:text-white" href="directory.html" aria-current="page">
+                                <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                    <i class="ri-team-line text-lg"></i>
+                                </div>
+                                <span class="text-sm font-medium whitespace-nowrap">Directorio de Empleados</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 cursor-pointer group text-slate-400 hover:bg-slate-700/60 hover:text-white" href="departments.html" aria-current="page">
+                                <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                    <i class="ri-team-line text-lg"></i>
+                                </div>
+                                <span class="text-sm font-medium whitespace-nowrap">Departamentos</span>
+                                
+                            </a>
+                        </li>
+                        <li>
+                            <a class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 cursor-pointer group bg-emerald-500 text-white shadow-lg" href="salarios.html" aria-current="page">
+                                <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                    <i class="ri-history-line text-lg"></i>
+                                </div>
+                                <span class="text-sm font-medium whitespace-nowrap">Historial laboral & Salarios</span>
+                                <div class="ml-auto w-1.5 h-1.5 rounded-full bg-white/70"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 cursor-pointer group text-slate-400 hover:bg-slate-700/60 hover:text-white" href="incidentes.html" aria-current="page">
+                                <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                    <i class="ri-alert-line text-lg"></i>
+                                </div>
+                                <span class="text-sm font-medium whitespace-nowrap">Incidencias</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 cursor-pointer group text-slate-400 hover:bg-slate-700/60 hover:text-white" href="ajustes.html" aria-current="page">
+                                <div class="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                                    <i class="ri-settings-3-line text-lg"></i>
+                                </div>
+                                <span class="text-sm font-medium whitespace-nowrap">Ajustes</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="border-t border-white/10 p-4 ">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-sm font-bold">A</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-white text-sm font-semibold truncate">Admin User</p>
+                            <p class="text-slate-400 text-xs truncate">HR Administrator</p>
+                        </div>
+                        <button class="w-6 h-6 flex items-center justify-center text-slate-400 hover:text-white cursor-pointer">
+                            <i class="ri-arrow-left-s-line text-lg"></i>
+                        </button>
+                    </div>
+                </div>
+            </aside>
+            <div class="flex-1 flex flex-col min-h-screen transition-all duration-300" style="margin-left: 260px;">
+                <header class="fixed top-0 right-0 z-20 bg-white border-b border-slate-100 flex items-center px-6 transition-all duration-300" style="left: 260px; height: 70px;">
+                    <div class="flex-1">
+                        <h2 class="text-xl font-bold text-slate-800" style="font-family: Inter, sans-serif;">HR Manager</h2>
+                    </div>
+                    <div class="relative mx-6 hidden md:block">
+                        <div class="w-5 h-5 flex items-center justify-center absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
+                            <i class="ri-search-line text-sm"></i>
+                        </div>
+                        <input placeholder="Buscar empleados, departamentos..." class="bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-4 py-2.5 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 w-72 transition-all" type="text" value="">
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="relative">
+                            <button class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 cursor-pointer transition-colors relative">
+                                <i class="ri-notification-3-line text-lg"></i>
+                                <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
+                            </button>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500 flex items-center justify-center cursor-pointer">
+                            <span class="text-white text-sm font-bold">A</span>
+                        </div>
+                    </div>
+                </header>
+                <main class="flex-1 p-6 mt-[70px] overflow-auto">
+                    <div class="space-y-5">
+                        <div class="flex items-center gap-2">
+                            <a href="salarios.html" class="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-700 transition-colors cursor-pointer">
+                                <i class="ri-arrow-left-line"></i>
+                                Historial Laboral
+                            </a>
+                            <i class="ri-arrow-right-s-line text-slate-300 text-sm"></i>
+                            <span id="employeeBreadcrumbName" class="text-sm text-slate-800 font-medium">Sumant Peac</span>
+                        </div>
+                        <div class="bg-white rounded-2xl border border-slate-100 p-5">
+                            <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                                <div class="flex-1">
+                                    <h3 id="employeeName" class="text-xl font-bold text-slate-800">Sumant Peac</h3>
+                                    <p class="text-sm text-slate-500 mt-0.5">Senior Engineer · Quality Management</p>
+                                    <div class="flex flex-wrap gap-3 mt-2">
+                                        <span class="text-xs text-slate-400">
+                                            <i class="ri-calendar-line mr-1"></i>
+                                            Contratado:
+                                            <strong id="employeeHireDate" class="text-slate-600">1985-02-18</strong>
+                                        </span>
+                                        <span class="text-xs text-slate-400">
+                                            <i class="ri-id-card-line mr-1"></i> ID
+                                            <strong id="employeeId" class="text-slate-600">#10009</strong>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3 flex-shrink-0">
+                                    <div class="text-center bg-slate-50 rounded-xl px-4 py-3">
+                                        <p id="employeeYears" class="text-xl font-bold text-slate-800">16</p>
+                                        <p class="text-xs text-slate-400 mt-0.5">Años</p>
+                                    </div>
+                                    <div class="text-center bg-emerald-50 rounded-xl px-4 py-3">
+                                        <p id="employeeSalary" class="text-xl font-bold text-emerald-600">$88,958</p>
+                                        <p class="text-xs text-slate-400 mt-0.5">Salario actual</p>
+                                    </div>
+                                    <div class="text-center bg-slate-50 rounded-xl px-4 py-3">
+                                        <p id="employeeChanges" class="text-xl font-bold text-slate-800">3</p>
+                                        <p class="text-xs text-slate-400 mt-0.5">Cambios</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 lg:grid-cols-5 gap-5">
+                            <div class="lg:col-span-3 bg-white rounded-2xl border border-slate-100 p-6">
+                                <h3 class="lg:col-span-3 bg-white rounded-2xl border border-slate-100 p-6">
+                                    <div class="w-5 h-5 flex items-center justify-center text-emerald-500">
+                                        <i class="ri-time-line"></i>
+                                    </div>
+                                    Trayectoria laboral
+                                </h3>
+                                <div class="relative">
+                                    <div class="absolute left-4 top-2 bottom-2 w-0.5 bg-slate-100"></div>
+                                    <div class="space-y-5">
+                                        <div class="relative pl-10">
+                                            <div class="absolute left-2.5 top-3 w-3 h-3 rounded-full border-2 border-white shadow bg-emerald-500 ring-2 ring-offset-1 ring-emerald-400"></div>
+                                            <div class="rounded-xl p-4 transition-all bg-emerald-50 border border-emerald-100">
+                                                <div class="flex items-start justify-between gap-2 mb-1.5">
+                                                    <div class="flex items-center gap-2 flex-wrap">
+                                                        <p class="font-semibold text-slate-800 text-sm">Senior Engineer</p>
+                                                        <span class="text-xs bg-emerald-500 text-white px-2 py-0.5 rounded-full font-medium">Actual</span>
+                                                    </div>
+                                                    <span class="text-xs font-medium px-2 py-0.5 rounded-full whitespace-nowrap flex-shrink-0 bg-emerald-100 text-emerald-700">Promoción</span>
+                                                </div>
+                                                <p class="text-xs text-slate-500 mb-2">Development</p>
+                                                <div class="flex items-center justify-between">
+                                                    <span class="text-xs text-slate-400">
+                                                        <i class="ri-calendar-line mr-1"></i>
+                                                        2020-01-01 → Actual
+                                                    </span>
+                                                    <span class="text-sm font-bold text-emerald-600">$88,958</span>
+                                                </div>
+                                                <div class="mt-2 pt-2 border-t border-slate-200/60 flex items-center gap-1 text-xs">
+                                                    <span class="text-emerald-600 flex items-center gap-1">
+                                                        <i class="ri-arrow-up-line"></i>
+                                                        +$16,958 vs anterior
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="relative pl-10">
+                                            <div class="absolute left-2.5 top-3 w-3 h-3 rounded-full border-2 border-white shadow bg-sky-500 "></div>
+                                            <div class="rounded-xl p-4 transition-all bg-slate-50 hover:bg-slate-100/70">
+                                                <div class="flex items-start justify-between gap-2 mb-1.5">
+                                                    <div class="flex items-center gap-2 flex-wrap">
+                                                        <p class="font-semibold text-slate-800 text-sm">Engineer</p>
+                                                    </div>
+                                                    <span class="text-xs font-medium px-2 py-0.5 rounded-full whitespace-nowrap flex-shrink-0 bg-sky-100 text-sky-700">Transferencia</span>
+                                                </div>
+                                                <p class="text-xs text-slate-500 mb-2">Development</p>
+                                                <div class="flex items-center justify-between">
+                                                    <span class="text-xs text-slate-400">
+                                                        <i class="ri-calendar-line mr-1"></i>
+                                                        2015-06-01 → 2019-12-31
+                                                    </span>
+                                                    <span class="text-sm font-bold text-emerald-600">$72,000</span>
+                                                </div>
+                                                <div class="mt-2 pt-2 border-t border-slate-200/60 flex items-center gap-1 text-xs">
+                                                    <span class="text-emerald-600 flex items-center gap-1">
+                                                        <i class="ri-arrow-up-line"></i>
+                                                        +$17,000 vs anterior
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="relative pl-10">
+                                            <div class="absolute left-2.5 top-3 w-3 h-3 rounded-full border-2 border-white shadow bg-violet-500 "></div>
+                                            <div class="rounded-xl p-4 transition-all bg-slate-50 hover:bg-slate-100/70">
+                                                <div class="flex items-start justify-between gap-2 mb-1.5">
+                                                    <div class="flex items-center gap-2 flex-wrap">
+                                                        <p class="font-semibold text-slate-800 text-sm">Assistant Engineer</p>
+                                                    </div>
+                                                    <span class="text-xs font-medium px-2 py-0.5 rounded-full whitespace-nowrap flex-shrink-0 bg-violet-100 text-violet-700">Contratación</span>
+                                                </div>
+                                                <p class="text-xs text-slate-500 mb-2">Production</p>
+                                                <div class="flex items-center justify-between">
+                                                    <span class="text-xs text-slate-400">
+                                                        <i class="ri-calendar-line mr-1"></i>
+                                                        2010-01-01 → 2015-05-31
+                                                    </span>
+                                                    <span class="text-sm font-bold text-emerald-600">$55,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-2 flex flex-col gap-5">
+                                <div class="bg-white rounded-2xl border border-slate-100 p-5">
+                                    <h3 class="font-semibold text-slate-800 mb-4 flex items-center gap-2 text-sm">
+                                        <div class="w-5 h-5 flex items-center justify-center text-amber-500">
+                                            <i class="ri-bar-chart-line"></i>
+                                        </div>
+                                        Resumen Salarial
+                                    </h3>
+                                    <div id="salarySummaryContent" class="space-y-5">
+                                        <div class="space-y-4">
+                                            <div>
+                                                <div class="flex items-center justify-between gap-3 mb-2">
+                                                    <span class="text-sm text-slate-600">Senior Engineer</span>
+                                                    <span class="text-sm font-semibold text-slate-800">$88,958</span>
+                                                </div>
+                                                <div class="w-full h-4 rounded-full bg-slate-100 overflow-hidden">
+                                                    <div class="h-full rounded-full bg-emerald-500" style="width: 100%"></div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="flex items-center justify-between gap-3 mb-2">
+                                                    <span class="text-sm text-slate-600">Engineer</span>
+                                                    <span class="text-sm font-semibold text-slate-800">$72,000</span>
+                                                </div>
+                                                <div class="w-full h-4 rounded-full bg-slate-100 overflow-hidden">
+                                                    <div class="h-full rounded-full bg-slate-300" style="width: 81%"></div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="flex items-center justify-between gap-3 mb-2">
+                                                    <span class="text-sm text-slate-600">Assistant Engineer</span>
+                                                    <span class="text-sm font-semibold text-slate-800">$55,000</span>
+                                                </div>
+                                                <div class="w-full h-4 rounded-full bg-slate-100 overflow-hidden">
+                                                    <div class="h-full rounded-full bg-slate-300" style="width: 62%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pt-5 border-t border-slate-100 grid grid-cols-2 gap-4">
+                                            <div class="text-center">
+                                                <p class="text-sm text-slate-400">Salario inicial</p>
+                                                <p class="text-2xl font-bold text-slate-800 mt-1">$55,000</p>
+                                            </div>
+                                            <div class="text-center">
+                                                <p class="text-sm text-slate-400">Salario máximo</p>
+                                                <p class="text-2xl font-bold text-emerald-600 mt-1">$88,958</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-2xl border border-slate-100 p-5">
+                                    <h3 class="font-semibold text-slate-800 mb-5 flex items-center gap-2 text-sm">
+                                        <div class="w-5 h-5 flex items-center justify-center text-sky-500">
+                                            <i class="ri-table-line"></i>
+                                        </div>
+                                        Tabla de puestos
+                                    </h3>
+                                    <div class="overflow-hidden">
+                                        <div class="grid grid-cols-3 gap-4 px-1 pb-3 border-b border-slate-100 text-xs font-semibold uppercase tracking-wide text-slate-400">
+                                            <span>Puesto</span>
+                                            <span>Desde</span>
+                                            <span class="text-right">Salario</span>
+                                        </div>
+                                        <div id="positionsTableContent" class="divide-y divide-slate-100">
+                                            <div class="grid grid-cols-3 gap-4 px-1 py-5 items-start">
+                                                <div class="flex flex-col gap-2">
+                                                    <p class="text-sm font-semibold text-slate-800">Senior Engineer</p>
+                                                    <span class="inline-flex w-fit text-xs font-medium px-3 py-1 rounded-full bg-emerald-100 text-emerald-700">Promoción</span>
+                                                </div>
+                                                <p class="text-sm text-slate-400">2020-01-01</p>
+                                                <p class="text-right text-sm font-bold text-emerald-600">$88,958</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    <script>
+        (() => {
+            const API_BASE_URL = 'http://localhost:3000';
+            const searchParams = new URLSearchParams(window.location.search);
+            const EMPLOYEE_ID = searchParams.get('employeeId') || '10009';
+            const employeeBreadcrumbName = document.getElementById('employeeBreadcrumbName');
+            const employeeName = document.getElementById('employeeName');
+            const employeeRoleDepartment = document.querySelector('.bg-white.rounded-2xl.border.border-slate-100.p-5 .flex-1 p.text-sm.text-slate-500.mt-0\\.5');
+            const employeeHireDate = document.getElementById('employeeHireDate');
+            const employeeId = document.getElementById('employeeId');
+            const employeeYears = document.getElementById('employeeYears');
+            const employeeSalary = document.getElementById('employeeSalary');
+            const employeeChanges = document.getElementById('employeeChanges');
+            const careerTimeline = document.querySelector('.lg\\:col-span-3 .relative .space-y-5');
+            const salarySummaryContent = document.getElementById('salarySummaryContent');
+            const positionsTableContent = document.getElementById('positionsTableContent');
+
+            const formatDate = (dateValue) => {
+                const date = new Date(dateValue);
+                if (Number.isNaN(date.getTime())) {
+                    return dateValue || 'N/D';
+                }
+
+                return date.toISOString().split('T')[0];
+            };
+
+            const formatCurrency = (value) => new Intl.NumberFormat('es-MX', {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 0
+            }).format(value || 0);
+
+            const calculateYearsInCompany = (hireDateValue) => {
+                const hireDate = new Date(hireDateValue);
+                if (Number.isNaN(hireDate.getTime())) {
+                    return 'N/D';
+                }
+
+                const today = new Date();
+                let years = today.getFullYear() - hireDate.getFullYear();
+                const monthDifference = today.getMonth() - hireDate.getMonth();
+
+                if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < hireDate.getDate())) {
+                    years -= 1;
+                }
+
+                return Math.max(years, 0);
+            };
+
+            const formatTimelineDate = (dateValue, isCurrent) => {
+                if (isCurrent) {
+                    return 'Actual';
+                }
+
+                return formatDate(dateValue);
+            };
+
+            const getTimelineStyles = (entry, index) => {
+                if (entry.is_current || index === 0) {
+                    return {
+                        dot: 'bg-emerald-500 ring-2 ring-offset-1 ring-emerald-400',
+                        card: 'rounded-xl p-4 transition-all bg-emerald-50 border border-emerald-100',
+                        badge: 'bg-emerald-100 text-emerald-700'
+                    };
+                }
+
+                if (entry.change_type === 'Transferencia') {
+                    return {
+                        dot: 'bg-sky-500',
+                        card: 'rounded-xl p-4 transition-all bg-slate-50 hover:bg-slate-100/70',
+                        badge: 'bg-sky-100 text-sky-700'
+                    };
+                }
+
+                return {
+                    dot: 'bg-violet-500',
+                    card: 'rounded-xl p-4 transition-all bg-slate-50 hover:bg-slate-100/70',
+                    badge: 'bg-violet-100 text-violet-700'
+                };
+            };
+
+            const formatDifference = (value) => {
+                if (value === null || value === undefined) {
+                    return '';
+                }
+
+                const numericValue = Number(value);
+                const sign = numericValue >= 0 ? '+' : '-';
+                return `${sign}${formatCurrency(Math.abs(numericValue))} vs anterior`;
+            };
+
+            const createTimelineItem = (entry, index) => {
+                const styles = getTimelineStyles(entry, index);
+                const showCurrentBadge = entry.is_current;
+                const showDifference = entry.salary_difference !== null && entry.salary_difference !== undefined;
+
+                const item = document.createElement('div');
+                item.className = 'relative pl-10';
+                item.innerHTML = `
+                    <div class="absolute left-2.5 top-3 w-3 h-3 rounded-full border-2 border-white shadow ${styles.dot}"></div>
+                    <div class="${styles.card}">
+                        <div class="flex items-start justify-between gap-2 mb-1.5">
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <p class="font-semibold text-slate-800 text-sm">${entry.title}</p>
+                                ${showCurrentBadge ? '<span class="text-xs bg-emerald-500 text-white px-2 py-0.5 rounded-full font-medium">Actual</span>' : ''}
+                            </div>
+                            <span class="text-xs font-medium px-2 py-0.5 rounded-full whitespace-nowrap flex-shrink-0 ${styles.badge}">${entry.change_type}</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-2">${entry.department}</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-slate-400">
+                                <i class="ri-calendar-line mr-1"></i>
+                                ${formatDate(entry.from_date)} → ${formatTimelineDate(entry.to_date, entry.is_current)}
+                            </span>
+                            <span class="text-sm font-bold text-emerald-600">${formatCurrency(entry.salary)}</span>
+                        </div>
+                        ${showDifference ? `
+                            <div class="mt-2 pt-2 border-t border-slate-200/60 flex items-center gap-1 text-xs">
+                                <span class="text-emerald-600 flex items-center gap-1">
+                                    <i class="ri-arrow-up-line"></i>
+                                    ${formatDifference(entry.salary_difference)}
+                                </span>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+
+                return item;
+            };
+
+            const createSalarySummaryItem = (entry, widthPercentage, isCurrent) => `
+                <div>
+                    <div class="flex items-center justify-between gap-3 mb-2">
+                        <span class="text-sm text-slate-600">${entry.title}</span>
+                        <span class="text-sm font-semibold ${isCurrent ? 'text-slate-800' : 'text-slate-700'}">${formatCurrency(entry.salary)}</span>
+                    </div>
+                    <div class="w-full h-4 rounded-full bg-slate-100 overflow-hidden">
+                        <div class="h-full rounded-full ${isCurrent ? 'bg-emerald-500' : 'bg-slate-300'}" style="width: ${widthPercentage}%"></div>
+                    </div>
+                </div>
+            `;
+
+            const getPositionBadgeClass = (changeType) => {
+                if (changeType === 'Promocion') {
+                    return 'bg-emerald-100 text-emerald-700';
+                }
+
+                if (changeType === 'Transferencia') {
+                    return 'bg-sky-100 text-sky-700';
+                }
+
+                return 'bg-violet-100 text-violet-700';
+            };
+
+            const getPositionBadgeLabel = (changeType) => {
+                if (changeType === 'Promocion') {
+                    return 'Promoción';
+                }
+
+                if (changeType === 'Transferencia') {
+                    return 'Transferencia';
+                }
+
+                return 'Contratación';
+            };
+
+            const createPositionTableRow = (entry) => `
+                <div class="grid grid-cols-3 gap-4 px-1 py-5 items-start">
+                    <div class="flex flex-col gap-2">
+                        <p class="text-sm font-semibold text-slate-800">${entry.title}</p>
+                        <span class="inline-flex w-fit text-xs font-medium px-3 py-1 rounded-full ${getPositionBadgeClass(entry.change_type)}">${getPositionBadgeLabel(entry.change_type)}</span>
+                    </div>
+                    <p class="text-sm text-slate-400">${formatDate(entry.from_date)}</p>
+                    <p class="text-right text-sm font-bold text-emerald-600">${formatCurrency(entry.salary)}</p>
+                </div>
+            `;
+
+            const loadEmployeeCareerSummary = async () => {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/api/career-history/employees/${EMPLOYEE_ID}`);
+
+                    if (!response.ok) {
+                        throw new Error('No se pudo obtener el detalle del empleado');
+                    }
+
+                    const employee = await response.json();
+                    const fullName = `${employee.first_name} ${employee.last_name}`;
+
+                    employeeBreadcrumbName.textContent = fullName;
+                    employeeName.textContent = fullName;
+                    if (employeeRoleDepartment) {
+                        employeeRoleDepartment.textContent = `${employee.current_title} · ${employee.department}`;
+                    }
+                    employeeHireDate.textContent = formatDate(employee.hire_date);
+                    employeeId.textContent = `#${employee.emp_no}`;
+                    employeeYears.textContent = calculateYearsInCompany(employee.hire_date);
+                    employeeSalary.textContent = formatCurrency(employee.current_salary);
+                    employeeChanges.textContent = employee.change_records ?? 'N/D';
+                } catch (error) {
+                    console.error('Error cargando resumen del historial:', error);
+                }
+            };
+
+            const loadEmployeeTimeline = async () => {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/api/career-history/employees/${EMPLOYEE_ID}/timeline`);
+
+                    if (!response.ok) {
+                        throw new Error('No se pudo obtener la trayectoria del empleado');
+                    }
+
+                    const timeline = await response.json();
+
+                    if (!careerTimeline) {
+                        return;
+                    }
+
+                    careerTimeline.innerHTML = '';
+
+                    if (!timeline.length) {
+                        careerTimeline.innerHTML = `
+                            <div class="relative pl-10">
+                                <div class="rounded-xl p-4 transition-all bg-slate-50 hover:bg-slate-100/70">
+                                    <p class="text-sm text-slate-500">No hay registros de trayectoria disponibles.</p>
+                                </div>
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    timeline.forEach((entry, index) => {
+                        careerTimeline.appendChild(createTimelineItem(entry, index));
+                    });
+
+                    if (salarySummaryContent) {
+                        const maxSalary = Math.max(...timeline.map((entry) => Number(entry.salary || 0)), 1);
+                        const oldestToNewest = [...timeline].reverse();
+                        const initialSalary = Number(oldestToNewest[0]?.salary || 0);
+                        const maximumSalary = Math.max(...oldestToNewest.map((entry) => Number(entry.salary || 0)), 0);
+                        const summaryRows = timeline.map((entry, index) => {
+                            const widthPercentage = Math.max((Number(entry.salary || 0) / maxSalary) * 100, 12);
+                            return createSalarySummaryItem(entry, widthPercentage, index === 0 || entry.is_current);
+                        }).join('');
+
+                        salarySummaryContent.innerHTML = `
+                            <div class="space-y-4">
+                                ${summaryRows}
+                            </div>
+                            <div class="pt-5 border-t border-slate-100 grid grid-cols-2 gap-4">
+                                <div class="text-center">
+                                    <p class="text-sm text-slate-400">Salario inicial</p>
+                                    <p class="text-xl font-bold text-slate-800 mt-1">${formatCurrency(initialSalary)}</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-sm text-slate-400">Salario máximo</p>
+                                    <p class="text-xl font-bold text-emerald-600 mt-1">${formatCurrency(maximumSalary)}</p>
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    if (positionsTableContent) {
+                        positionsTableContent.innerHTML = timeline
+                            .map((entry) => createPositionTableRow(entry))
+                            .join('');
+                    }
+                } catch (error) {
+                    console.error('Error cargando timeline del historial:', error);
+                }
+            };
+
+            loadEmployeeCareerSummary();
+            loadEmployeeTimeline();
+        })();
+    </script>
+</body>
+</html>

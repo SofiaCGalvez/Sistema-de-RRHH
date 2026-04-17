@@ -128,7 +128,7 @@
                                     <i class="ri-user-line text-lg"></i>
                                 </div>
                                 <div>
-                                    <p class="text-xl font-bold text-slate-800">12</p>
+                                    <p id="careerEmployeesCount" class="text-xl font-bold text-slate-800">12</p>
                                     <p class="text-xs text-slate-400">Empleados con historial</p>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
                                     <i class="ri-briefcase-line text-lg"></i>
                                 </div>
                                 <div>
-                                    <p class="text-xl font-bold text-slate-800">10</p>
+                                    <p id="careerRecordsCount" class="text-xl font-bold text-slate-800">10</p>
                                     <p class="text-xs text-slate-400">Registros totales</p>
                                 </div>
                             </div>
@@ -146,7 +146,7 @@
                                     <i class="ri-arrow-up-line text-lg"></i>
                                 </div>
                                 <div>
-                                    <p class="text-xl font-bold text-slate-800">4</p>
+                                    <p id="careerPromotionsCount" class="text-xl font-bold text-slate-800">4</p>
                                     <p class="text-xs text-slate-400">Promociones registradas</p>
                                 </div>
                             </div>
@@ -158,13 +158,13 @@
                                         <i class="ri-team-line"></i>
                                     </div>
                                     <span class="font-semibold text-slate-800 text-sm">Empleados</span>
-                                    <span class="text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full font-medium">12</span>
+                                    <span id="careerTableBadge" class="text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full font-medium">12</span>
                                 </div>
                                 <div class="relative w-full sm:w-64">
                                     <div class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 flex items-center justify-center text-slate-400">
                                         <i class="ri-search-line text-sm"></i>
                                     </div>
-                                    <input placeholder="Buscar por nombre, puesto..." class="w-full pl-9 pr-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-50 bg-slate-50" type="text" value>
+                                    <input id="careerSearchInput" placeholder="Buscar por nombre, puesto..." class="w-full pl-9 pr-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-50 bg-slate-50" type="text" value>
                                 </div>
                             </div>
                             <div class="overflow-x-auto">
@@ -179,7 +179,7 @@
                                             <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wide">Accion</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="divide-y divide-slate-50">
+                                    <tbody id="careerHistoryTableBody" class="divide-y divide-slate-50">
                                         <tr class="hover:bg-slate-50/70 transition-colors group">
                                             <td class="px-5 py-3.5">
                                                 <div>
@@ -214,5 +214,143 @@
             </div>
         </div>
     </div>
+    <script>
+        (() => {
+            const API_BASE_URL = 'http://localhost:3000';
+            const EMPLOYEE_LIMIT = 12;
+            const employeesCount = document.getElementById('careerEmployeesCount');
+            const recordsCount = document.getElementById('careerRecordsCount');
+            const promotionsCount = document.getElementById('careerPromotionsCount');
+            const tableBadge = document.getElementById('careerTableBadge');
+            const searchInput = document.getElementById('careerSearchInput');
+            const tableBody = document.getElementById('careerHistoryTableBody');
+            let allEmployees = [];
+
+            const formatCurrency = (value) => new Intl.NumberFormat('es-MX', {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 0
+            }).format(value || 0);
+
+            const createEmployeeRow = (employee) => {
+                const row = document.createElement('tr');
+                const historyAction = `
+                    <a href="historial.html?employeeId=${employee.emp_no}" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-emerald-50 text-emerald-700 rounded-lg hover:bg-emerald-100 transition-colors cursor-pointer whitespace-nowrap">Ver historial
+                        <i class="ri-arrow-right-line"></i>
+                    </a>
+                `;
+
+                row.className = 'hover:bg-slate-50/70 transition-colors group';
+                row.innerHTML = `
+                    <td class="px-5 py-3.5">
+                        <div>
+                            <p class="text-sm font-semibold text-slate-800">${employee.first_name} ${employee.last_name}</p>
+                            <p class="text-xs text-slate-400">#${employee.emp_no}</p>
+                        </div>
+                    </td>
+                    <td class="px-4 py-3.5">
+                        <span class="text-sm text-slate-600">${employee.department}</span>
+                    </td>
+                    <td class="px-4 py-3.5">
+                        <span class="text-sm text-slate-600">${employee.current_title}</span>
+                    </td>
+                    <td class="px-4 py-3.5">
+                        <span class="text-sm font-semibold text-emerald-600">${formatCurrency(employee.current_salary)}</span>
+                    </td>
+                    <td class="px-4 py-3.5 text-center">
+                        <span class="inline-flex items-center justify-center w-7 h-7 bg-slate-100 text-slate-600 rounded-full text-xs font-bold">${employee.change_records}</span>
+                    </td>
+                    <td class="px-5 py-3.5 text-right">
+                        ${historyAction}
+                    </td>
+                `;
+
+                return row;
+            };
+
+            const renderSummary = (employees) => {
+                const totalEmployees = employees.length;
+                const totalRecords = employees.reduce((sum, employee) => sum + Number(employee.change_records || 0), 0);
+                const totalPromotions = employees.reduce((sum, employee) => sum + Math.max(Number(employee.change_records || 0) - 1, 0), 0);
+
+                employeesCount.textContent = totalEmployees;
+                recordsCount.textContent = totalRecords;
+                promotionsCount.textContent = totalPromotions;
+                tableBadge.textContent = totalEmployees;
+            };
+
+            const renderEmployees = (employees) => {
+                tableBody.innerHTML = '';
+
+                if (!employees.length) {
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="6" class="px-5 py-8 text-center text-sm text-slate-500">
+                                No se encontraron empleados con historial.
+                            </td>
+                        </tr>
+                    `;
+                    tableBadge.textContent = '0';
+                    return;
+                }
+
+                employees.forEach((employee) => {
+                    tableBody.appendChild(createEmployeeRow(employee));
+                });
+
+                tableBadge.textContent = employees.length;
+            };
+
+            const applySearch = () => {
+                const searchTerm = searchInput.value.trim().toLowerCase();
+                const filteredEmployees = allEmployees.filter((employee) => {
+                    const fullName = `${employee.first_name} ${employee.last_name}`.toLowerCase();
+                    const employeeId = String(employee.emp_no);
+                    const currentTitle = (employee.current_title || '').toLowerCase();
+                    const department = (employee.department || '').toLowerCase();
+
+                    return (
+                        !searchTerm ||
+                        fullName.includes(searchTerm) ||
+                        employeeId.includes(searchTerm) ||
+                        currentTitle.includes(searchTerm) ||
+                        department.includes(searchTerm)
+                    );
+                });
+
+                renderEmployees(filteredEmployees);
+            };
+
+            const loadCareerHistory = async () => {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/api/career-history/employees?limit=${EMPLOYEE_LIMIT}`);
+
+                    if (!response.ok) {
+                        throw new Error('No se pudo obtener el historial laboral');
+                    }
+
+                    allEmployees = await response.json();
+                    renderSummary(allEmployees);
+                    renderEmployees(allEmployees);
+                } catch (error) {
+                    console.error('Error cargando historial laboral:', error);
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="6" class="px-5 py-8 text-center text-sm text-red-500">
+                                No se pudo cargar el historial laboral.
+                            </td>
+                        </tr>
+                    `;
+                    employeesCount.textContent = '0';
+                    recordsCount.textContent = '0';
+                    promotionsCount.textContent = '0';
+                    tableBadge.textContent = '0';
+                }
+            };
+
+            searchInput.addEventListener('input', applySearch);
+            loadCareerHistory();
+        })();
+    </script>
 </body>
 </html>

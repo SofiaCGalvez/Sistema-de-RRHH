@@ -254,11 +254,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                 <div class="lg:col-span-1">
+                                <div class="lg:col-span-1">
                                     <div class="bg-white rounded-2xl border border-slate-100 p-6">
                                         <div class="flex items-center justify-between mb-5">
                                             <h3 class="font-semibold text-slate-800">Resumen de Incidencias</h3>
-                                            <span class="text-xs bg-red-50 text-red-600 px-2 py-1 rounded-full font-medium">28 total</span>
+                                            <span id="incidentsTotalBadge" class="text-xs bg-red-50 text-red-600 px-2 py-1 rounded-full font-medium">0 total</span>
                                         </div>
                                         <div class="grid grid-cols-2 gap-3 mb-5">
                                             <div class="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-amber-100 text-amber-700">
@@ -267,7 +267,7 @@
                                                 </div>
                                                 <div>
                                                     <p class="text-xs font-medium">Tardanza</p>
-                                                    <p class="text-lg font-bold leading-tight">12</p>
+                                                    <p id="incidentTypeTardanza" class="text-lg font-bold leading-tight">0</p>
                                                 </div>
                                             </div>
                                             <div class="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-red-100 text-red-700">
@@ -276,7 +276,7 @@
                                                 </div>
                                                 <div>
                                                     <p class="text-xs font-medium">Ausentismo</p>
-                                                    <p class="text-lg font-bold leading-tight">5</p>
+                                                    <p id="incidentTypeAusentismo" class="text-lg font-bold leading-tight">0</p>
                                                 </div>
                                             </div>
                                             <div class="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-violet-100 text-violet-700">
@@ -285,7 +285,7 @@
                                                 </div>
                                                 <div>
                                                     <p class="text-xs font-medium">Conflicto Laboral</p>
-                                                    <p class="text-lg font-bold leading-tight">3</p>
+                                                    <p id="incidentTypeConflicto" class="text-lg font-bold leading-tight">0</p>
                                                 </div>
                                             </div>
                                             <div class="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-orange-100 text-orange-700">
@@ -294,7 +294,7 @@
                                                 </div>
                                                 <div>
                                                     <p class="text-xs font-medium">Accidente Laboral</p>
-                                                    <p class="text-lg font-bold leading-tight">2</p>
+                                                    <p id="incidentTypeAccidente" class="text-lg font-bold leading-tight">0</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -304,28 +304,28 @@
                                                     <div class="w-2 h-2 rounded-full bg-amber-400"></div>
                                                     <span class="text-sm text-slate-600">Pendientes</span>
                                                 </div>
-                                                <span class="text-sm font-semibold text-amber-600">8</span>
+                                                <span id="incidentStatusPending" class="text-sm font-semibold text-amber-600">0</span>
                                             </div>
                                             <div class="flex items-center justify-between">
                                                 <div class="flex items-center gap-2">
                                                     <div class="w-2 h-2 rounded-full bg-sky-400"></div>
                                                     <span class="text-sm text-slate-600">En Proceso</span>
                                                 </div>
-                                                <span class="text-sm font-semibold text-sky-600">5</span>
+                                                <span id="incidentStatusInProcess" class="text-sm font-semibold text-sky-600">0</span>
                                             </div>
                                             <div class="flex items-center justify-between">
                                                 <div class="flex items-center gap-2">
                                                     <div class="w-2 h-2 rounded-full bg-emerald-400"></div>
                                                     <span class="text-sm text-slate-600">Resueltas</span>
                                                 </div>
-                                                <span class="text-sm font-semibold text-emerald-600">12</span>
+                                                <span id="incidentStatusResolved" class="text-sm font-semibold text-emerald-600">0</span>
                                             </div>
                                             <div class="flex items-center justify-between">
                                                 <div class="flex items-center gap-2">
                                                     <div class="w-2 h-2 rounded-full bg-slate-400"></div>
                                                     <span class="text-sm text-slate-600">Cerradas</span>
                                                 </div>
-                                                <span class="text-sm font-semibold text-slate-600">3</span>
+                                                <span id="incidentStatusClosed" class="text-sm font-semibold text-slate-600">0</span>
                                             </div>      
                                         </div>
                                     </div>
@@ -514,6 +514,15 @@
             const activeDepartmentsValue = document.getElementById('activeDepartmentsValue');
             const averageSalaryValue = document.getElementById('averageSalaryValue');
             const pendingIncidentsValue = document.getElementById('pendingIncidentsValue');
+            const incidentsTotalBadge = document.getElementById('incidentsTotalBadge');
+            const incidentTypeTardanza = document.getElementById('incidentTypeTardanza');
+            const incidentTypeAusentismo = document.getElementById('incidentTypeAusentismo');
+            const incidentTypeConflicto = document.getElementById('incidentTypeConflicto');
+            const incidentTypeAccidente = document.getElementById('incidentTypeAccidente');
+            const incidentStatusPending = document.getElementById('incidentStatusPending');
+            const incidentStatusInProcess = document.getElementById('incidentStatusInProcess');
+            const incidentStatusResolved = document.getElementById('incidentStatusResolved');
+            const incidentStatusClosed = document.getElementById('incidentStatusClosed');
 
             const formatNumber = (value) => new Intl.NumberFormat('es-MX').format(value ?? 0);
             const formatCurrency = (value) => new Intl.NumberFormat('es-MX', {
@@ -521,6 +530,69 @@
                 currency: 'USD',
                 maximumFractionDigits: 0
             }).format(value ?? 0);
+
+            const renderIncidentSummary = (incidents) => {
+                const typeCounts = {
+                    Tardanza: 0,
+                    Ausentismo: 0,
+                    'Conflicto Laboral': 0,
+                    'Accidente Laboral': 0
+                };
+
+                const statusCounts = {
+                    pending: 0,
+                    in_process: 0,
+                    resolved: 0,
+                    closed: 0
+                };
+
+                incidents.forEach((incident) => {
+                    const type = incident.incident_type;
+                    const status = incident.status;
+
+                    if (Object.prototype.hasOwnProperty.call(typeCounts, type)) {
+                        typeCounts[type] += 1;
+                    }
+
+                    if (Object.prototype.hasOwnProperty.call(statusCounts, status)) {
+                        statusCounts[status] += 1;
+                    }
+                });
+
+                incidentsTotalBadge.textContent = `${formatNumber(incidents.length)} total`;
+                incidentTypeTardanza.textContent = formatNumber(typeCounts.Tardanza);
+                incidentTypeAusentismo.textContent = formatNumber(typeCounts.Ausentismo);
+                incidentTypeConflicto.textContent = formatNumber(typeCounts['Conflicto Laboral']);
+                incidentTypeAccidente.textContent = formatNumber(typeCounts['Accidente Laboral']);
+                incidentStatusPending.textContent = formatNumber(statusCounts.pending);
+                incidentStatusInProcess.textContent = formatNumber(statusCounts.in_process);
+                incidentStatusResolved.textContent = formatNumber(statusCounts.resolved);
+                incidentStatusClosed.textContent = formatNumber(statusCounts.closed);
+            };
+
+            const loadIncidentSummary = async () => {
+                try {
+                    const response = await fetch('http://localhost:3000/incidents');
+
+                    if (!response.ok) {
+                        throw new Error('No se pudieron obtener las incidencias');
+                    }
+
+                    const incidents = await response.json();
+                    renderIncidentSummary(incidents);
+                } catch (error) {
+                    console.error('Error cargando resumen de incidencias:', error);
+                    incidentsTotalBadge.textContent = 'N/D';
+                    incidentTypeTardanza.textContent = 'N/D';
+                    incidentTypeAusentismo.textContent = 'N/D';
+                    incidentTypeConflicto.textContent = 'N/D';
+                    incidentTypeAccidente.textContent = 'N/D';
+                    incidentStatusPending.textContent = 'N/D';
+                    incidentStatusInProcess.textContent = 'N/D';
+                    incidentStatusResolved.textContent = 'N/D';
+                    incidentStatusClosed.textContent = 'N/D';
+                }
+            };
 
             const formatFallbackSummaryFromEmployees = (employees) => {
                 const now = new Date();
@@ -583,6 +655,7 @@
             };
 
             loadDashboardSummary();
+            loadIncidentSummary();
         })();
     </script>
     <script src="js/apiclima.js"></script>
