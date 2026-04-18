@@ -24,7 +24,7 @@ connection.connect((err) => {
   console.log('✅ Conectado a MySQL');
 });
 
-// 📌 Endpoint: obtener empleados
+//  Endpoint: obtener empleados
 app.get('/employees', (req, res) => {
   connection.query('SELECT * FROM employees', (err, results) => {
     if (err) {
